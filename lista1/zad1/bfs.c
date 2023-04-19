@@ -93,7 +93,7 @@ struct Graph* createGraph(int vertices)
 }
 
 // Add edge
-void addEdge(struct Graph* graph, int src, int dest) 
+void addEdgeUD(struct Graph* graph, int src, int dest) 
 {
   	// Add edge from src to dest
   	struct node* newNode = createNode(dest);
@@ -104,6 +104,14 @@ void addEdge(struct Graph* graph, int src, int dest)
   	newNode = createNode(src);
   	newNode->next = graph->adjLists[dest];
 	graph->adjLists[dest] = newNode;
+}
+
+void addEdgeD(struct Graph* graph, int src, int dest) 
+{
+  	// Add edge from src to dest
+  	struct node* newNode = createNode(dest);
+  	newNode->next = graph->adjLists[src];
+  	graph->adjLists[src] = newNode;
 }
 
 // Create a queue
@@ -183,6 +191,8 @@ void printQueue(struct queue* q)
 
 int main() 
 {
+	char d;
+	scanf("%c", &d);
 	int w;
 	int k;
 	scanf("%d", &w);
@@ -190,14 +200,30 @@ int main()
 	struct Graph* graph = createGraph(w);
 	
 	int i1, i2;
-	for (int i = 0; i < k; i++);
-	{	
-		scanf("%d", &i1);
-		scanf("%d", &i2);
-		addEdge(graph, i1, i2);
+	int start;
+	if (d == 'D')
+	{
+		for (int i = 0; i < k; i++)
+		{	
+			scanf("%d", &i1);
+			scanf("%d", &i2);
+			if (i == 0) start = i1;
+			addEdgeD(graph, i1, i2);
+		}
 	}
+	else if (d == 'U')
+	{
+		for (int i = 0; i < k; i++)
+		{	
+			scanf("%d", &i1);
+			scanf("%d", &i2);
+			if (i == 0) start = i1;
+			addEdgeUD(graph, i1, i2);
+		}
+	}
+	
 
-  	bfs(graph, 0);
+  	bfs(graph, start);
 
   	return 0;
 }
