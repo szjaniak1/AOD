@@ -1,152 +1,116 @@
 #include <stdio.h>
-#include <stdlib.h>
 
-struct node 
+#define MAX 100
+
+void display();
+void input();
+void dfs();
+int pop();
+void push(int);
+int v, numOfNodes, numOfVert, t = -1, visited[MAX] = {0}, a[MAX][MAX] = {0}, stk[MAX] = {0};
+
+void input()
 {
-  	int vertex;
-  	struct node* next;
-};
+	int src, dst;
+	scanf("%d", &numOfNodes);
+	scanf("%d", &numOfVert);
 
-struct node* createNode(int v);
-
-struct Graph 
-{
-  	int numVertices;
-  	int* visited;
-
-  	// We need int** to store a two dimensional array.
-  	// Similary, we need struct node** to store an array of Linked lists
-  	struct node** adjLists;
-};
-
-// DFS algo
-void dfs(struct Graph* graph, int vertex) 
-{
-  	struct node* adjList = graph->adjLists[vertex];
-  	struct node* temp = adjList;
-
-  	graph->visited[vertex] = 1;
-  	printf("Visited %d \n", vertex);
-
-  	while (temp != NULL) 
+	for (int i = 1; i <= numOfVert; i++)
 	{
-    		int connectedVertex = temp->vertex;
+		scanf("%d", &src);
+		scanf("%d", &dst);
+		a[src][dst] = 1;
+		if(i == 1) v = src;	
+	}
+}
 
-    		if (graph->visited[connectedVertex] == 0) 
+void dfs(int v)
+{
+	printf("%d->", v);
+	int i, j, u=v;
+	visited[u] = 1;
+
+	while(1)
+	{
+		for (j = 1; j<= numOfNodes; j++)
 		{
-      			dfs(graph, connectedVertex);
-    		}
-    		temp = temp->next;
-  	}
+			if (a[u][j] != 0 && visited[j] == 0)
+			{
+				visited[j] = 1;
+				push(j);
+			}
+		}
+		u = pop();
+		printf("%d->", u);
+
+		if (t == -1) break;
+	}
+	printf("NULL\n");
 }
 
-// Create a node
-struct node* createNode(int v) 
+void dfstree(int v)
 {
-	struct node* newNode = malloc(sizeof(struct node));
-  	newNode->vertex = v;
-  	newNode->next = NULL;
-  	return newNode;
-}
+	printf("%d\n", v);
+	int i, j, u=v;
+	visited[u] = 1;
+	int depth[MAX] = {0};
 
-// Create graph
-struct Graph* createGraph(int vertices) 
-{
-  	struct Graph* graph = malloc(sizeof(struct Graph));
-  	graph->numVertices = vertices;
-
-  	graph->adjLists = malloc(vertices * sizeof(struct node*));
-
-  	graph->visited = malloc(vertices * sizeof(int));
-
-  	int i;
-  	for (i = 0; i < vertices; i++) 
+	while(1)
 	{
-    		graph->adjLists[i] = NULL;
-    		graph->visited[i] = 0;
-  	}
-  	return graph;
-}
-
-// Add edge
-void addEdgeUD(struct Graph* graph, int src, int dest) 
-{
- 	 // Add edge from src to dest
-  	struct node* newNode = createNode(dest);
-	newNode->next = graph->adjLists[src];
-  	graph->adjLists[src] = newNode;
-
-  	// Add edge from dest to src
-  	newNode = createNode(src);
-  	newNode->next = graph->adjLists[dest];
-  	graph->adjLists[dest] = newNode;
-}
-
-void addEdgeD(struct Graph* graph, int src, int dest) 
-{
- 	 // Add edge from src to dest
-  	struct node* newNode = createNode(dest);
-	newNode->next = graph->adjLists[src];
-  	graph->adjLists[src] = newNode;
-}
-
-// Print the graph
-void printGraph(struct Graph* graph) 
-{
-  	int v;
-  	for (v = 0; v < graph->numVertices; v++) 
-	{
-    		struct node* temp = graph->adjLists[v];
-    		printf("\n Adjacency list of vertex %d\n ", v);
-    		while (temp) 
+		for (j = 1; j<= numOfNodes; j++)
 		{
-      			printf("%d -> ", temp->vertex);
-      			temp = temp->next;
-    		}
-    		printf("\n");
-  	}
+			if (a[u][j] != 0 && visited[j] == 0)
+			{
+				visited[j] = 1;
+				depth[j] = depth[u] + 1;
+				push(j);
+			}
+		}
+		u = pop();
+		for (int i = 0; i < depth[u]; i++)
+		{
+			printf("-");
+		}
+		printf("%d\n", u);
+
+		if (t == -1) break;
+	}
+	printf("NULL\n");
 }
 
-int main() 
+void display()
 {
-  	char d;
+	int i, j;
+	printf("\nadjacency matrix[][]: \n");
+	for (i = 1; i <= numOfNodes; i++)
+	{
+		for (j = 1; j <= numOfNodes; j++)
+		{
+			printf("%d\t", a[i][j]);
+		}
+		printf("\n");
+	}
+}
+
+void push(int x)
+{
+	stk[++t] = x;
+}
+
+int pop()
+{
+	return stk[t--];
+}
+
+int main(int argc, char *argv[]) 
+{
+	char d;
 	scanf("%c", &d);
-	int w;
-	int k;
-	scanf("%d", &w);
-	scanf("%d", &k);
-	struct Graph* graph = createGraph(w);
-	
-	int i1, i2;
-	int start;
 
-	if (d == 'D')
-	{
-		printf("DIRECTED DFS GRAPH\n");
-		for (int i = 0; i < k; i++)
-		{	
-			scanf("%d", &i1);
-			scanf("%d", &i2);
-			if (i == 0) start = i1;
-			addEdgeD(graph, i1, i2);
-		}
-	}
-	else if (d == 'U')
-	{
-		printf("UNDIRECTED DFS GRAPH\n");
-		for (int i = 0; i < k; i++)
-		{	
-			scanf("%d", &i1);
-			scanf("%d", &i2);
-			if (i == 0) start = i1;
-			addEdgeUD(graph, i1, i2);
-		}
-	}
+	input();	
 
-	
-
-  	dfs(graph, start);
+	if (argc < 2) dfs(v);
+	else dfstree(v);
 
   	return 0;
-
 }

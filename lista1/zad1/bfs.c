@@ -50,6 +50,37 @@ void bfs(int v)
 	printf("NULL\n");
 }
 
+void bfstree(int v)
+{
+	printf("%d\n", v);
+	int j, u=v;
+	visited[u] = 1;
+	int depth[MAX] = {0};
+
+	while(1)
+	{
+		for (j = 1; j <= numOfNodes; j++)
+		{
+			if(a[u][j] != 0 && visited[j] == 0)
+			{
+				visited[j] = 1;
+				depth[j] = depth[u] + 1;
+				addQue(j);
+			}
+		}
+		u = delQue();
+		for (int i = 0; i < depth[u]; i++)
+		{
+			printf("-");
+		}
+		printf("%d\n", u);
+
+		if (f == r) break;
+	}
+
+	printf("NULL\n");
+}
+
 void adj()
 {
 	int i, j;
@@ -82,7 +113,8 @@ int main(int argc, char *argv[])
 
 	input();	
 
-  	bfs(v);
+	if (argc < 2) bfs(v);
+	else bfstree(v);
 
   	return 0;
 }
