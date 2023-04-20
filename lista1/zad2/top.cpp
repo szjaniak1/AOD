@@ -1,12 +1,11 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <unordered_map>
 
-void display();
-int** input();
-void dfs();
 int pop(int*);
 void push(int, int*);
 int v, numOfNodes, numOfVert, t = -1;
+bool isCyclic(int **a, int *stk);
 
 int** input()
 {
@@ -43,9 +42,13 @@ int** input()
 void topologicalSortUtil(int v, int **a, int *visited, int *stk)
 {
 	visited[v] = 1;
-	for (int *i = a[v][0]; i != &a[v][numOfNodes - 1]; ++i)
+	for (int *i = &a[v][0]; i != &a[v][numOfNodes]; ++i)
 	{
-		if (!visited[*i]) topologicalSortUtil(*i, a, visited, stk);
+		if (!visited[*i])
+		{
+			int v = *i;
+			topologicalSortUtil(v, a, visited, stk);
+		}
 	}
 
 	push(v, stk);
@@ -53,18 +56,47 @@ void topologicalSortUtil(int v, int **a, int *visited, int *stk)
 
 void topologicalSort(int **a, int *visited, int *stk)
 {
-	for (int i = 0; i < numOfVert; i++)
+	for (int i = 0; i < numOfNodes; i++)
 	{
 		if (visited[i] == 0)
 		{
 			topologicalSortUtil(i, a, visited, stk);
 		}
 	}
-
-	while (t >= 0)
+	
+	if (!isCyclic(a, stk))
 	{
-		printf("%d ", pop(stk));
+		printf("\ngraph doesn't have a cycle");			
 	}
+	else
+	{
+		printf("\ngraph has a cycle");
+	}
+
+}
+
+bool isCyclic(int **a, int *stk)
+{
+	std::unordered_map<int, int> topPos;
+	int i = 0;
+	while(t > -1)
+	{
+		int top = pop(stk);
+		if (numOfNodes <= 200)
+		{
+			printf("%d,", top);
+		}
+		topPos[top] = i;
+		i++;
+	}
+	for (i = 0; i < numOfNodes; i++)
+	{
+		for (int *j = &a[i][0]; j != &a[i][numOfNodes]; j++)
+		{
+			if (topPos[i] > topPos[*j]) return true;
+		}
+	}
+	return false;
 }
 
 void display(int **a)
