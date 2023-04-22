@@ -1,5 +1,6 @@
 using JuMP
 using HiGHS
+using Printf
 
 import JSON
 
@@ -46,15 +47,14 @@ model = Model(HiGHS.Optimizer)
 optimize!(model)
 solution_summary(model)
 
-println("")
-println("objective value: ", objective_value(model))
+@printf "\npierwszy podpunkt:\n\n"
+@printf "minimalny koszt: %d\n\n" objective_value(model)
 
-println("")
-println("drugi podpunkt: ")
-println("")
+@printf "drugi podpunkt:\n\n"
+
 
 for f in Firmy
-    println(f, " provided: ", value(sum(x[f, l] for l in Lotniska)), " of petrol")
+    @printf "%s dostarczyla %d galonow paliwa\n" f value(sum(x[f, l] for l in Lotniska))
     if value(sum(x[f, l] for l in Lotniska)) > 0.0
         global S = 0
         S += 1
@@ -62,24 +62,23 @@ for f in Firmy
 end
 
 if S == length(collect(Firmy))
-    println("")
-    println("wszystkie firmy dostarczaja paliwo")
+    @printf "wszystkie firmy dostarczaja paliwo\n\n"
+else
+    @printf "nie wszystkie firmy dostarczaja paliwo\n\n"
 end
 
 S = 0
 
-println("")
-println("trzeci podpunkt")
-println("")
+@printf "trzeci podpunkt:\n\n"
 
 for f in Firmy
     if value(sum(x[f, l] for l in Lotniska)) == data["firmy"][f]["capacity"]
-        println(f, " total supply was reached")
+        @printf "%s wyczerpala mozliwosci dostaw paliwa\n" f
     end
 end
 
-println("")
+@printf "\n"
 
 for f in Firmy, l in Lotniska
-    println(f, "=>", l, ": ", value(x[f, l]))
+    @printf "%s => %s: %d\n" f l value(x[f, l])
 end
