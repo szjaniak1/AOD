@@ -37,7 +37,12 @@ int main(void)
     // g.dial_ss(0);
     // printf("\n");
 
-    auto dist = g.dijkstra_classic_ss(0);
+    auto dist = g.dijkstra_classic_ss(2);
     print_dist(dist, V);
+
+    printf("\n");
+
+    auto d = g.dijkstra_classic_p2p(2, 4);
+    printf("%zu", d);
     return 0;
 }

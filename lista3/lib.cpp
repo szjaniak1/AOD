@@ -2,7 +2,6 @@
 
 #include <utility>
 #include <queue>
-#include <functional>
 #include <algorithm>
 #include <stdio.h>
 
@@ -61,9 +60,11 @@ auto Graph::dijkstra_classic_ss(const size_t src) -> distances
     return dist;
 }
 
-auto Graph::dijkstra_classic_p2p(const int start, const int goal) -> distances
+auto Graph::dijkstra_classic_p2p(const size_t start, const size_t goal) -> size_t
 {
+    auto dist = dijkstra_classic_ss(start);
 
+    return dist[goal].first;
 }
 
 auto Graph::dial_ss(const size_t src) -> distances
@@ -119,50 +120,9 @@ auto Graph::dial_ss(const size_t src) -> distances
     return dist;
 }
 
-auto Graph::dial_p2p(const int start, const int goal) -> distances
+auto Graph::dial_p2p(const size_t start, const size_t goal) -> size_t
 {
-    // int start = start - 1;
-    // int goal = goal - 1;
-    // std::vector<std::pair<int, std::list<size_t>::iterator> > dist(node_quantity);
+    auto dist = dial_ss(start);
 
-    // for (size_t i = 0; i < node_quantity; i++)
-    // {
-    //     dist[i].first = INF;
-    // }
-
-    // std::list<size_t> B[max_weight * node_quantity + 1];
-
-    // dist[start].first = 0;
-    // B[0].push_back(start);
-
-    // std::priority_queue<std::pair<int, int>, std::vector<std::pair<int, int>>, std::greater<>> heap;
-    // heap.push({0, start});
-
-    // while (!heap.empty())
-    // {
-    //     auto [dist, node] = heap.top();
-    //     heap.pop();
-    //     if (node == goal)
-    //     {
-    //         return dist;
-    //     }
-    //     if (auto d = dist[node]; d.has_value() && dist > d.value())
-    //     {
-    //         continue;
-    //     }
-    //     B[dist].erase(std::remove(B[dist].begin(), B[dist].end(), node), buckets[dist].end());
-    //     distances[node] = dist;
-    //     for (auto [neighbor, weight] : adj[node])
-    //     {
-    //         int new_dist = dist + weight;
-    //         if (auto d = distances[neighbor]; d.has_value() && new_dist >= d.value())
-    //         {
-    //             continue;
-    //         }
-    //         buckets[new_dist].push_back(neighbor);
-    //         heap.push({new_dist, neighbor});
-    //     }
-    // }
-    // return std::nullopt;
-
+    return dist[goal].first;
 }

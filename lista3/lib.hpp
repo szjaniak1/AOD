@@ -16,7 +16,7 @@ class Graph
 
         auto add_edge(const size_t vert1, const size_t vert2, const size_t weight) -> void;
         auto dijkstra_classic_ss(const size_t src) -> distances;
-        auto dijkstra_classic_p2p(const int start, const int goal) -> distances;
+        auto dijkstra_classic_p2p(const size_t start, const size_t goal) -> size_t;
         auto dial_ss(const size_t src) -> distances;
-        auto dial_p2p(const int start, const int goal) -> distances;
+        auto dial_p2p(const size_t start, const size_t goal) -> size_t;
 };
