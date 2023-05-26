@@ -8,8 +8,6 @@
 
 #define INF 0x3f3f3f3f
 
-typedef std::pair<size_t, size_t> pair;
-
 Graph::Graph(const size_t quantity, const size_t weight)
 {
     this->node_quantity = quantity;
@@ -24,9 +22,9 @@ auto Graph::add_edge(const size_t vert1, const size_t vert2, const size_t weight
     adj[vert2].push_back(std::make_pair(vert1, weight));   
 }
 
-auto Graph::dijkstra_classic_ss(const size_t src) -> std::vector<std::pair<size_t, std::list<size_t>::iterator> >
+auto Graph::dijkstra_classic_ss(const size_t src) -> distances
 {
-    std::vector<std::pair<size_t, std::list<size_t>::iterator> > dist(node_quantity);
+    distances dist(node_quantity);
     std::priority_queue<pair, std::vector<pair>, std::greater<pair> > Q;
 
     for (size_t i = 0; i < node_quantity; i++)
@@ -60,22 +58,17 @@ auto Graph::dijkstra_classic_ss(const size_t src) -> std::vector<std::pair<size_
         }
     }
 
-
-    printf("Vertex Distance from Source\n");
-    for (size_t i = 0; i < node_quantity; ++i)
-        printf("%zu \t\t %zu\n", i, dist[i].first);
-
     return dist;
 }
 
-auto Graph::dijkstra_classic_p2p(const int start, const int goal) -> std::vector<std::pair<size_t, std::list<size_t>::iterator> >
+auto Graph::dijkstra_classic_p2p(const int start, const int goal) -> distances
 {
 
 }
 
-auto Graph::dial_ss(const size_t src) -> std::vector<std::pair<size_t, std::list<size_t>::iterator> >
+auto Graph::dial_ss(const size_t src) -> distances
 {
-    std::vector<std::pair<size_t, std::list<size_t>::iterator> > dist(node_quantity);
+    distances dist(node_quantity);
 
     for (size_t i = 0; i < node_quantity; i++)
     {
@@ -123,14 +116,10 @@ auto Graph::dial_ss(const size_t src) -> std::vector<std::pair<size_t, std::list
         }
     }
 
-    printf("Vertex Distance from Source\n");
-    for (size_t i = 0; i < node_quantity; ++i)
-        printf("%zu     %zu\n", i, dist[i].first);
-
     return dist;
 }
 
-auto Graph::dial_p2p(const int start, const int goal) -> std::vector<std::pair<size_t, std::list<size_t>::iterator> >
+auto Graph::dial_p2p(const int start, const int goal) -> distances
 {
     // int start = start - 1;
     // int goal = goal - 1;

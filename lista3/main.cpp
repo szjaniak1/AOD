@@ -3,10 +3,13 @@
 #include "lib.hpp"
 
 void take_input();
+void print_dist(const distances dist, const size_t node_quantity);
 
-void take_input()
+void print_dist(const distances dist, const size_t node_quantity)
 {
-
+    printf("Vertex Distance from Source\n");
+    for (size_t i = 0; i < node_quantity; ++i)
+        printf("%zu \t %zu\n", i, dist[i].first);
 }
 
 int main(void)
@@ -31,9 +34,10 @@ int main(void)
     g.add_edge(7, 8, 7);
  
     // maximum weighted edge - 14
-    g.dial_ss(0);
-    printf("\n");
+    // g.dial_ss(0);
+    // printf("\n");
 
-    g.dijkstra_classic_ss(0);
+    auto dist = g.dijkstra_classic_ss(0);
+    print_dist(dist, V);
     return 0;
 }
