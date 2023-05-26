@@ -1,3 +1,5 @@
+#include <cstdio>
+
 #include "lib.hpp"
 
 void take_input();
@@ -9,7 +11,7 @@ void take_input()
 
 int main(void)
 {
-    int V = 9;
+    size_t V = 9;
     Graph g(V, 0);
  
     // making above shown graph
@@ -30,5 +32,8 @@ int main(void)
  
     // maximum weighted edge - 14
     g.dial_ss(0);
+    printf("\n");
+
+    g.dijkstra_classic_ss(0);
     return 0;
 }
