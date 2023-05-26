@@ -1,9 +1,16 @@
 #include "lib.hpp"
 
+void take_input();
+
+void take_input()
+{
+
+}
+
 int main(void)
 {
     int V = 9;
-    Graph g(V);
+    Graph g(V, 0);
  
     // making above shown graph
     g.add_edge(0, 1, 4);
@@ -22,7 +29,6 @@ int main(void)
     g.add_edge(7, 8, 7);
  
     // maximum weighted edge - 14
-    g.shortest_path(0, 14);
-
+    g.dial_ss(0);
     return 0;
 }
