@@ -1,0 +1,1 @@
+/sbin/c++ CMakeFiles/AOD3.dir/main.cpp.o -o AOD3  libgraph.a libradixheap.a 
