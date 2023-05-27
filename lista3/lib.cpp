@@ -5,6 +5,8 @@
 #include <algorithm>
 #include <stdio.h>
 
+#include "radixheap.hpp"
+
 #define INF 0x3f3f3f3f
 
 Graph::Graph(const size_t quantity, const size_t weight)
@@ -125,4 +127,67 @@ auto Graph::dial_p2p(const size_t start, const size_t goal) -> size_t
     auto dist = dial_ss(start);
 
     return dist[goal].first;
+}
+
+auto Graph::radix_heap_ss(const size_t src) -> distances
+{
+    distances dist(node_quantity);
+    // RadixHeap heap(node_quantity);    
+
+    // bool* s = new bool[node_quantity];
+    // bool* f = new bool[node_quantity];
+
+    // int v, w;
+    // int distance;
+
+    // for (size_t v = 0; v < node_quantity; v++)
+    // {
+    //     s[v] = false;
+    //     f[v] = false;
+    // }
+
+    // dist[src].first = 0;
+    // f[src]= true;
+    // heap.insert(src, 0);
+
+    // while (heap.nItems() > 0)
+    // {
+    //     v = heap.deleteMin();
+
+    //     s[v] = true;
+    //     f[v] = false;
+
+    //     for (auto edge = adj[v].begin(); edge != adj[v].end(); edge++)
+    //     {
+    //         w = edge->first;
+
+    //         if (s[w] == false)
+    //         {
+    //             auto weight = (*edge).second;
+    //             auto v = (*edge).first;
+    //             //distance = dist[v].first + (*edge).second;
+
+    //             auto dv = dist[v].first;
+    //             distance = dv + weight;
+
+    //             if (distance < dist[w].first)
+    //             {
+    //                 dist[w].first = distance;
+
+    //                 if (f[w])
+    //                 {
+    //                     heap.decreaseKey(w, distance);
+    //                 }
+    //                 else
+    //                 {
+    //                     heap.insert(w, distance);
+    //                     f[w] = true;
+    //                 }
+    //             }
+    //         }
+    //     }
+    // }
+
+    return dist;
+
 }

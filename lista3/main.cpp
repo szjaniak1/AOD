@@ -1,6 +1,7 @@
 #include <cstdio>
 
 #include "lib.hpp"
+#include "radixheap.hpp"
 
 void take_input();
 void print_dist(const distances dist, const size_t node_quantity);
@@ -44,5 +45,9 @@ int main(void)
 
     auto d = g.dijkstra_classic_p2p(2, 4);
     printf("%zu", d);
+
+    auto d2 = g.radix_heap_ss(2);
+    print_dist(d2, V);
+
     return 0;
 }
