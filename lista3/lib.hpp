@@ -18,6 +18,8 @@ class Graph
         Graph(const size_t node_quantity, const size_t max_weight);
 
         auto add_edge(const int32_t vert1, const int32_t vert2, const size_t weight) -> void;
+        auto create_graph_from_path(char *path) -> void;
+        auto get_sources(char *path, int mode) -> std::list<int32_t>;
         auto dijkstra_classic_ss(const size_t src) -> distances;
         auto dijkstra_classic_p2p(const size_t start, const size_t goal) -> int32_t;
         auto dial_ss(const size_t src) -> distances;

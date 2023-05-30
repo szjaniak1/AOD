@@ -1,5 +1,0 @@
-/usr/local/bin/AOD3
-/usr/local/lib/libgraph.a
-/usr/local/include/lib.hpp
-/usr/local/lib/libradixheap.a
-/usr/local/include/radixheap.hpp

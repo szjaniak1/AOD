@@ -1,2 +1,0 @@
-/usr/sbin/ar qc libradixheap.a CMakeFiles/radixheap.dir/radixheap.cpp.o
-/usr/sbin/ranlib libradixheap.a

@@ -6,6 +6,8 @@
 #include <stdio.h>
 #include <cmath>
 #include <limits>
+#include <fstream>
+#include <string.h>
 
 #define INF 0x3f3f3f3f
 
@@ -267,4 +269,80 @@ auto Graph::radix_heap_p2p(const size_t start, const size_t goal) -> int32_t
 {
     const auto dist = radix_heap_ss(start);
     return dist[goal];
+}
+
+auto Graph::create_graph_from_path(char *path) -> void
+{
+    std::fstream file(path);
+    std::string text;
+
+    while (getline(file, text))
+    {
+        char *p;
+        char *line = new char [text.length() + 1];
+
+        strcpy(line, text.c_str());
+        p = strtok(line, " ");
+
+        if (strcmp(p, "a") == 0)
+        {
+            p = strtok(NULL, " ");
+            int src = atoi(p);
+            p = strtok(NULL, " ");
+            int dest = atoi(p);
+            p = strtok(NULL, " ");
+            int weight = atoi(p);
+
+            if(weight > max_weight)
+            {
+                max_weight = weight;
+            }
+            add_edge(src - 1, dest - 1, weight);
+        }
+        else if (strcmp(p, "p") == 0)
+        {
+            p = strtok(NULL, " ");
+            p = strtok(NULL, " ");
+            node_quantity = atoi(p);
+        }
+        delete[] line;
+    }
+    file.close();
+}
+
+auto Graph::get_sources(char *path, int mode) -> std::list<int32_t>
+{
+    std::fstream file(path);
+    std::list<int32_t> src;
+    std::string text;
+
+    while (getline(file, text))
+    {
+        char* p;
+        char* line = new char [text.length() + 1];
+        strcpy(line, text.c_str());
+        p = strtok(line, " ");
+
+        if(mode == 1)
+        {
+            if(strcmp(p, "s") == 0)
+            {
+                p = strtok(NULL, " ");
+                src.push_back(atoi(p) - 1);
+            }
+        }
+        else if (mode == 2)
+        {
+            if(strcmp(p, "q") == 0)
+            {
+                p = strtok(NULL, " ");
+                src.push_back(atoi(p) - 1);
+                p = strtok(NULL, " ");
+                src.push_back(atoi(p) - 1);
+            }
+        }
+        delete[] line;
+    }
+    file.close();
+    return src;
 }
