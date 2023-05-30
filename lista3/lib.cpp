@@ -7,13 +7,11 @@
 #include <cmath>
 #include <limits>
 
-#include "radixheap.hpp"
-
 #define INF 0x3f3f3f3f
 
 struct bucketsradix
 {
-    std::list<size_t> v_list;
+    std::list<int32_t> v_list;
     size_t range_a;
     size_t range_b;
 };
@@ -25,7 +23,7 @@ Graph::Graph(const size_t quantity, const size_t weight)
     this->adj = new std::list<pair>[node_quantity];
 }
 
-auto Graph::add_edge(const size_t vert1, const size_t vert2, const size_t weight) -> void
+auto Graph::add_edge(const int32_t vert1, const int32_t vert2, const size_t weight) -> void
 {
     if (weight > this->max_weight) this->max_weight = weight;
     adj[vert1].push_back(std::make_pair(vert2, weight));
@@ -56,8 +54,8 @@ auto Graph::dijkstra_classic_ss(const size_t src) -> distances
             auto v = (*i).first;
             auto weight = (*i).second;
 
-            size_t du = dist[u].first;
-            size_t dv = dist[v].first;
+            auto du = dist[u].first;
+            auto dv = dist[v].first;
 
             if (dv > du + weight)
             {
@@ -71,7 +69,7 @@ auto Graph::dijkstra_classic_ss(const size_t src) -> distances
     return dist;
 }
 
-auto Graph::dijkstra_classic_p2p(const size_t start, const size_t goal) -> size_t
+auto Graph::dijkstra_classic_p2p(const size_t start, const size_t goal) -> int32_t
 {
     auto dist = dijkstra_classic_ss(start);
 
@@ -87,9 +85,9 @@ auto Graph::dial_ss(const size_t src) -> distances
         dist[i].first = INF;
     }
 
-    std::list<size_t> B[max_weight * node_quantity + 1];
+    std::list<int32_t> B[max_weight * node_quantity + 1];
 
-    B[0].push_back(src);
+    B[0].push_back((int32_t)src);
     dist[src].first = 0;
 
     size_t idx = 0;
@@ -131,7 +129,7 @@ auto Graph::dial_ss(const size_t src) -> distances
     return dist;
 }
 
-auto Graph::dial_p2p(const size_t start, const size_t goal) -> size_t
+auto Graph::dial_p2p(const size_t start, const size_t goal) -> int32_t
 {
     auto dist = dial_ss(start);
 
@@ -263,4 +261,10 @@ auto Graph::radix_heap_ss(const size_t src) -> std::vector<int>
     }
 
     return dist;
+}
+
+auto Graph::radix_heap_p2p(const size_t start, const size_t goal) -> int32_t
+{
+    const auto dist = radix_heap_ss(start);
+    return dist[goal];
 }

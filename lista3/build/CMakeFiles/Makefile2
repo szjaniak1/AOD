@@ -65,7 +65,6 @@ CMAKE_BINARY_DIR = /home/szjaniak/Inf/semestr4/AOD/lista3/build
 # The main recursive "all" target.
 all: CMakeFiles/AOD3.dir/all
 all: CMakeFiles/graph.dir/all
-all: CMakeFiles/radixheap.dir/all
 .PHONY : all
 
 # The main recursive "preinstall" target.
@@ -75,7 +74,6 @@ preinstall:
 # The main recursive "clean" target.
 clean: CMakeFiles/AOD3.dir/clean
 clean: CMakeFiles/graph.dir/clean
-clean: CMakeFiles/radixheap.dir/clean
 .PHONY : clean
 
 #=============================================================================
@@ -83,7 +81,6 @@ clean: CMakeFiles/radixheap.dir/clean
 
 # All Build rule for target.
 CMakeFiles/AOD3.dir/all: CMakeFiles/graph.dir/all
-CMakeFiles/AOD3.dir/all: CMakeFiles/radixheap.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/AOD3.dir/build.make CMakeFiles/AOD3.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/AOD3.dir/build.make CMakeFiles/AOD3.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/szjaniak/Inf/semestr4/AOD/lista3/build/CMakeFiles --progress-num=1,2 "Built target AOD3"
@@ -91,7 +88,7 @@ CMakeFiles/AOD3.dir/all: CMakeFiles/radixheap.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/AOD3.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/szjaniak/Inf/semestr4/AOD/lista3/build/CMakeFiles 6
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/szjaniak/Inf/semestr4/AOD/lista3/build/CMakeFiles 4
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/AOD3.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/szjaniak/Inf/semestr4/AOD/lista3/build/CMakeFiles 0
 .PHONY : CMakeFiles/AOD3.dir/rule
@@ -130,32 +127,6 @@ graph: CMakeFiles/graph.dir/rule
 CMakeFiles/graph.dir/clean:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/graph.dir/build.make CMakeFiles/graph.dir/clean
 .PHONY : CMakeFiles/graph.dir/clean
-
-#=============================================================================
-# Target rules for target CMakeFiles/radixheap.dir
-
-# All Build rule for target.
-CMakeFiles/radixheap.dir/all:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/radixheap.dir/build.make CMakeFiles/radixheap.dir/depend
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/radixheap.dir/build.make CMakeFiles/radixheap.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/szjaniak/Inf/semestr4/AOD/lista3/build/CMakeFiles --progress-num=5,6 "Built target radixheap"
-.PHONY : CMakeFiles/radixheap.dir/all
-
-# Build rule for subdir invocation for target.
-CMakeFiles/radixheap.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/szjaniak/Inf/semestr4/AOD/lista3/build/CMakeFiles 2
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/radixheap.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/szjaniak/Inf/semestr4/AOD/lista3/build/CMakeFiles 0
-.PHONY : CMakeFiles/radixheap.dir/rule
-
-# Convenience name for target.
-radixheap: CMakeFiles/radixheap.dir/rule
-.PHONY : radixheap
-
-# clean rule for target.
-CMakeFiles/radixheap.dir/clean:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/radixheap.dir/build.make CMakeFiles/radixheap.dir/clean
-.PHONY : CMakeFiles/radixheap.dir/clean
 
 #=============================================================================
 # Special targets to cleanup operation of make.

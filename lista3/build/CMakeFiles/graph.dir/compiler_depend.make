@@ -59,6 +59,16 @@ CMakeFiles/graph.dir/lib.cpp.o: /home/szjaniak/Inf/semestr4/AOD/lista3/lib.cpp \
   /usr/include/c++/13.1.1/bits/uses_allocator_args.h \
   /usr/include/c++/13.1.1/tuple \
   /usr/include/c++/13.1.1/bits/invoke.h \
+  /usr/include/c++/13.1.1/cstdint \
+  /usr/lib/gcc/x86_64-pc-linux-gnu/13.1.1/include/stdint.h \
+  /usr/include/stdint.h \
+  /usr/include/bits/libc-header-start.h \
+  /usr/include/bits/types.h \
+  /usr/include/bits/typesizes.h \
+  /usr/include/bits/time64.h \
+  /usr/include/bits/wchar.h \
+  /usr/include/bits/stdint-intn.h \
+  /usr/include/bits/stdint-uintn.h \
   /usr/include/c++/13.1.1/vector \
   /usr/include/c++/13.1.1/bits/stl_uninitialized.h \
   /usr/include/c++/13.1.1/bits/stl_vector.h \
@@ -84,7 +94,6 @@ CMakeFiles/graph.dir/lib.cpp.o: /home/szjaniak/Inf/semestr4/AOD/lista3/lib.cpp \
   /usr/include/c++/13.1.1/bits/stl_tempbuf.h \
   /usr/include/c++/13.1.1/cstdlib \
   /usr/include/stdlib.h \
-  /usr/include/bits/libc-header-start.h \
   /usr/include/bits/waitflags.h \
   /usr/include/bits/waitstatus.h \
   /usr/include/bits/floatn.h \
@@ -92,14 +101,10 @@ CMakeFiles/graph.dir/lib.cpp.o: /home/szjaniak/Inf/semestr4/AOD/lista3/lib.cpp \
   /usr/include/bits/types/locale_t.h \
   /usr/include/bits/types/__locale_t.h \
   /usr/include/sys/types.h \
-  /usr/include/bits/types.h \
-  /usr/include/bits/typesizes.h \
-  /usr/include/bits/time64.h \
   /usr/include/bits/types/clock_t.h \
   /usr/include/bits/types/clockid_t.h \
   /usr/include/bits/types/time_t.h \
   /usr/include/bits/types/timer_t.h \
-  /usr/include/bits/stdint-intn.h \
   /usr/include/endian.h \
   /usr/include/bits/endian.h \
   /usr/include/bits/endianness.h \
@@ -156,11 +161,8 @@ CMakeFiles/graph.dir/lib.cpp.o: /home/szjaniak/Inf/semestr4/AOD/lista3/lib.cpp \
   /usr/include/c++/13.1.1/tr1/modified_bessel_func.tcc \
   /usr/include/c++/13.1.1/tr1/poly_hermite.tcc \
   /usr/include/c++/13.1.1/tr1/poly_laguerre.tcc \
-  /usr/include/c++/13.1.1/tr1/riemann_zeta.tcc \
-  /home/szjaniak/Inf/semestr4/AOD/lista3/radixheap.hpp
+  /usr/include/c++/13.1.1/tr1/riemann_zeta.tcc
 
-
-/home/szjaniak/Inf/semestr4/AOD/lista3/radixheap.hpp:
 
 /usr/include/c++/13.1.1/tr1/poly_hermite.tcc:
 
@@ -198,6 +200,18 @@ CMakeFiles/graph.dir/lib.cpp.o: /home/szjaniak/Inf/semestr4/AOD/lista3/lib.cpp \
 
 /usr/include/bits/types/FILE.h:
 
+/usr/include/c++/13.1.1/tr1/hypergeometric.tcc:
+
+/usr/include/bits/types/__FILE.h:
+
+/usr/include/bits/types/__fpos64_t.h:
+
+/usr/include/bits/stdio_lim.h:
+
+/usr/include/bits/types/__mbstate_t.h:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/13.1.1/include/stdarg.h:
+
 /usr/include/bits/mathcalls-helper-functions.h:
 
 /usr/include/c++/13.1.1/tuple:
@@ -214,15 +228,11 @@ CMakeFiles/graph.dir/lib.cpp.o: /home/szjaniak/Inf/semestr4/AOD/lista3/lib.cpp \
 
 /usr/include/c++/13.1.1/bits/memory_resource.h:
 
-/usr/include/bits/floatn-common.h:
-
-/usr/include/c++/13.1.1/vector:
-
-/usr/include/c++/13.1.1/initializer_list:
-
 /usr/include/c++/13.1.1/bits/range_access.h:
 
-/usr/include/c++/13.1.1/bits/list.tcc:
+/usr/include/bits/floatn-common.h:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/13.1.1/include/stdint.h:
 
 /usr/include/c++/13.1.1/bits/hash_bytes.h:
 
@@ -231,10 +241,6 @@ CMakeFiles/graph.dir/lib.cpp.o: /home/szjaniak/Inf/semestr4/AOD/lista3/lib.cpp \
 /usr/include/bits/struct_rwlock.h:
 
 /usr/include/c++/13.1.1/bits/memoryfwd.h:
-
-/usr/include/c++/13.1.1/tr1/hypergeometric.tcc:
-
-/usr/include/bits/types/__FILE.h:
 
 /usr/include/c++/13.1.1/new:
 
@@ -276,8 +282,6 @@ CMakeFiles/graph.dir/lib.cpp.o: /home/szjaniak/Inf/semestr4/AOD/lista3/lib.cpp \
 
 /usr/include/c++/13.1.1/queue:
 
-/usr/include/bits/types/__fpos64_t.h:
-
 /usr/include/c++/13.1.1/bits/allocated_ptr.h:
 
 /usr/include/c++/13.1.1/cmath:
@@ -308,8 +312,6 @@ CMakeFiles/graph.dir/lib.cpp.o: /home/szjaniak/Inf/semestr4/AOD/lista3/lib.cpp \
 
 /usr/include/c++/13.1.1/bits/stl_uninitialized.h:
 
-/usr/include/c++/13.1.1/bits/requires_hosted.h:
-
 /usr/include/c++/13.1.1/bits/stl_queue.h:
 
 /usr/include/c++/13.1.1/bits/ptr_traits.h:
@@ -321,6 +323,14 @@ CMakeFiles/graph.dir/lib.cpp.o: /home/szjaniak/Inf/semestr4/AOD/lista3/lib.cpp \
 /usr/include/gnu/stubs.h:
 
 /usr/include/bits/pthreadtypes-arch.h:
+
+/usr/include/bits/mathcalls.h:
+
+/usr/include/bits/types/__fpos_t.h:
+
+/usr/include/bits/types/clock_t.h:
+
+/usr/include/c++/13.1.1/bits/exception_defines.h:
 
 /usr/include/stdlib.h:
 
@@ -346,6 +356,10 @@ CMakeFiles/graph.dir/lib.cpp.o: /home/szjaniak/Inf/semestr4/AOD/lista3/lib.cpp \
 
 /usr/include/c++/13.1.1/bits/functexcept.h:
 
+/usr/include/c++/13.1.1/bits/list.tcc:
+
+/usr/include/stdint.h:
+
 /usr/include/c++/13.1.1/ext/type_traits.h:
 
 /usr/include/bits/pthreadtypes.h:
@@ -362,7 +376,33 @@ CMakeFiles/graph.dir/lib.cpp.o: /home/szjaniak/Inf/semestr4/AOD/lista3/lib.cpp \
 
 /usr/include/c++/13.1.1/bits/stl_function.h:
 
+/usr/include/bits/libc-header-start.h:
+
+/usr/include/bits/types.h:
+
+/usr/include/bits/stdlib-float.h:
+
+/usr/include/bits/time64.h:
+
 /usr/include/c++/13.1.1/bits/stl_iterator_base_funcs.h:
+
+/usr/include/bits/wchar.h:
+
+/usr/include/c++/13.1.1/pstl/execution_defs.h:
+
+/usr/include/bits/stdint-intn.h:
+
+/usr/include/c++/13.1.1/bits/requires_hosted.h:
+
+/usr/include/bits/stdint-uintn.h:
+
+/usr/include/c++/13.1.1/cstdint:
+
+/usr/include/endian.h:
+
+/usr/include/c++/13.1.1/initializer_list:
+
+/usr/include/c++/13.1.1/vector:
 
 /usr/include/c++/13.1.1/bits/deque.tcc:
 
@@ -379,14 +419,6 @@ CMakeFiles/graph.dir/lib.cpp.o: /home/szjaniak/Inf/semestr4/AOD/lista3/lib.cpp \
 /usr/include/c++/13.1.1/utility:
 
 /usr/include/c++/13.1.1/bits/stl_relops.h:
-
-/usr/include/bits/mathcalls.h:
-
-/usr/include/bits/types/clock_t.h:
-
-/usr/include/c++/13.1.1/bits/exception_defines.h:
-
-/usr/include/bits/types/__fpos_t.h:
 
 /usr/include/c++/13.1.1/deque:
 
@@ -410,11 +442,7 @@ CMakeFiles/graph.dir/lib.cpp.o: /home/szjaniak/Inf/semestr4/AOD/lista3/lib.cpp \
 
 /usr/include/c++/13.1.1/bits/std_abs.h:
 
-/usr/lib/gcc/x86_64-pc-linux-gnu/13.1.1/include/stdarg.h:
-
 /usr/include/c++/13.1.1/cstdlib:
-
-/usr/include/bits/libc-header-start.h:
 
 /usr/include/bits/waitflags.h:
 
@@ -440,19 +468,9 @@ CMakeFiles/graph.dir/lib.cpp.o: /home/szjaniak/Inf/semestr4/AOD/lista3/lib.cpp \
 
 /usr/include/sys/types.h:
 
-/usr/include/bits/types.h:
-
-/usr/include/bits/stdlib-float.h:
-
-/usr/include/bits/time64.h:
-
 /usr/include/bits/types/timer_t.h:
 
 /usr/include/stdio.h:
-
-/usr/include/bits/stdint-intn.h:
-
-/usr/include/endian.h:
 
 /usr/include/c++/13.1.1/bits/alloc_traits.h:
 
@@ -467,9 +485,3 @@ CMakeFiles/graph.dir/lib.cpp.o: /home/szjaniak/Inf/semestr4/AOD/lista3/lib.cpp \
 /usr/include/bits/thread-shared-types.h:
 
 /usr/include/alloca.h:
-
-/usr/include/c++/13.1.1/pstl/execution_defs.h:
-
-/usr/include/bits/stdio_lim.h:
-
-/usr/include/bits/types/__mbstate_t.h:

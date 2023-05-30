@@ -187,19 +187,6 @@ graph/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/graph.dir/build.make CMakeFiles/graph.dir/build
 .PHONY : graph/fast
 
-#=============================================================================
-# Target rules for targets named radixheap
-
-# Build rule for target.
-radixheap: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 radixheap
-.PHONY : radixheap
-
-# fast build rule for target.
-radixheap/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/radixheap.dir/build.make CMakeFiles/radixheap.dir/build
-.PHONY : radixheap/fast
-
 lib.o: lib.cpp.o
 .PHONY : lib.o
 
@@ -248,30 +235,6 @@ main.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/AOD3.dir/build.make CMakeFiles/AOD3.dir/main.cpp.s
 .PHONY : main.cpp.s
 
-radixheap.o: radixheap.cpp.o
-.PHONY : radixheap.o
-
-# target to build an object file
-radixheap.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/radixheap.dir/build.make CMakeFiles/radixheap.dir/radixheap.cpp.o
-.PHONY : radixheap.cpp.o
-
-radixheap.i: radixheap.cpp.i
-.PHONY : radixheap.i
-
-# target to preprocess a source file
-radixheap.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/radixheap.dir/build.make CMakeFiles/radixheap.dir/radixheap.cpp.i
-.PHONY : radixheap.cpp.i
-
-radixheap.s: radixheap.cpp.s
-.PHONY : radixheap.s
-
-# target to generate assembly for a file
-radixheap.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/radixheap.dir/build.make CMakeFiles/radixheap.dir/radixheap.cpp.s
-.PHONY : radixheap.cpp.s
-
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -286,16 +249,12 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... AOD3"
 	@echo "... graph"
-	@echo "... radixheap"
 	@echo "... lib.o"
 	@echo "... lib.i"
 	@echo "... lib.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
-	@echo "... radixheap.o"
-	@echo "... radixheap.i"
-	@echo "... radixheap.s"
 .PHONY : help
 
 
