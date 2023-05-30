@@ -1,27 +1,7 @@
-#include <cstdio>
 #include <cstring>
 #include <iostream>
 
 #include "lib.hpp"
-
-void take_input();
-void print_dist(const distances dist, const size_t node_quantity);
-void print_dist_radix(const std::vector<int32_t> dist, const size_t node_quantity);
-
-void print_dist(const distances dist, const size_t node_quantity)
-{
-    printf("Vertex Distance from Source\n");
-    for (size_t i = 0; i < node_quantity; ++i)
-        printf("%zu \t %zu\n", i, dist[i].first);
-}
-
-void print_dist_radix(const std::vector<int> dist, const size_t node_quantity)
-{
-    for (auto d : dist)
-    {
-        printf("%d\n", d);
-    }
-}
 
 int main(int argc, char* argv[])
 {
@@ -63,7 +43,7 @@ int main(int argc, char* argv[])
         while(!src.empty())
         {
             int s = src.back();
-            std::vector<int> dist = g->radix_heap_ss(s);
+            auto dist = g->dial_ss(s);
             src.pop_back();
         }
     }
@@ -74,7 +54,7 @@ int main(int argc, char* argv[])
             int dest = src.back();
             src.pop_back();
             int s = src.back();
-            auto dist = g->radix_heap_p2p(s, dest);
+            auto dist = g->dial_p2p(s, dest);
             src.pop_back();
             std::cout << dist << std::endl;
         }
@@ -82,3 +62,4 @@ int main(int argc, char* argv[])
 
     return 0;
 }
+
