@@ -1,5 +1,5 @@
 CMakeFiles/radixheap.dir/radixheap.cpp.o: \
- /home/szjaniak/Documents/Inf/semestr4/AOD/lista3/radixheap.cpp \
+ /home/szjaniak/Inf/semestr4/AOD/lista3/radixheap.cpp \
  /usr/include/stdc-predef.h /usr/include/c++/13.1.1/iostream \
  /usr/include/c++/13.1.1/bits/requires_hosted.h \
  /usr/include/c++/13.1.1/x86_64-pc-linux-gnu/bits/c++config.h \
@@ -155,4 +155,4 @@ CMakeFiles/radixheap.dir/radixheap.cpp.o: \
  /usr/include/c++/13.1.1/tr1/poly_hermite.tcc \
  /usr/include/c++/13.1.1/tr1/poly_laguerre.tcc \
  /usr/include/c++/13.1.1/tr1/riemann_zeta.tcc \
- /home/szjaniak/Documents/Inf/semestr4/AOD/lista3/radixheap.hpp
+ /home/szjaniak/Inf/semestr4/AOD/lista3/radixheap.hpp

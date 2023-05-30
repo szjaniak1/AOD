@@ -21,6 +21,6 @@ class Graph
         auto dijkstra_classic_p2p(const size_t start, const size_t goal) -> size_t;
         auto dial_ss(const size_t src) -> distances;
         auto dial_p2p(const size_t start, const size_t goal) -> size_t;
-        auto radix_heap_ss(const size_t src) -> distances;
+        auto radix_heap_ss(const size_t src) -> std::vector<int>;
         auto radix_heap_p2p(const size_t start, const size_t goal) -> size_t;
 };

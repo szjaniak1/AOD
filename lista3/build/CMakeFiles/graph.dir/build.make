@@ -53,10 +53,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/szjaniak/Documents/Inf/semestr4/AOD/lista3
+CMAKE_SOURCE_DIR = /home/szjaniak/Inf/semestr4/AOD/lista3
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/szjaniak/Documents/Inf/semestr4/AOD/lista3/build
+CMAKE_BINARY_DIR = /home/szjaniak/Inf/semestr4/AOD/lista3/build
 
 # Include any dependencies generated for this target.
 include CMakeFiles/graph.dir/depend.make
@@ -70,18 +70,18 @@ include CMakeFiles/graph.dir/progress.make
 include CMakeFiles/graph.dir/flags.make
 
 CMakeFiles/graph.dir/lib.cpp.o: CMakeFiles/graph.dir/flags.make
-CMakeFiles/graph.dir/lib.cpp.o: /home/szjaniak/Documents/Inf/semestr4/AOD/lista3/lib.cpp
+CMakeFiles/graph.dir/lib.cpp.o: /home/szjaniak/Inf/semestr4/AOD/lista3/lib.cpp
 CMakeFiles/graph.dir/lib.cpp.o: CMakeFiles/graph.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/szjaniak/Documents/Inf/semestr4/AOD/lista3/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/graph.dir/lib.cpp.o"
-	/sbin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/graph.dir/lib.cpp.o -MF CMakeFiles/graph.dir/lib.cpp.o.d -o CMakeFiles/graph.dir/lib.cpp.o -c /home/szjaniak/Documents/Inf/semestr4/AOD/lista3/lib.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/szjaniak/Inf/semestr4/AOD/lista3/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/graph.dir/lib.cpp.o"
+	/usr/sbin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/graph.dir/lib.cpp.o -MF CMakeFiles/graph.dir/lib.cpp.o.d -o CMakeFiles/graph.dir/lib.cpp.o -c /home/szjaniak/Inf/semestr4/AOD/lista3/lib.cpp
 
 CMakeFiles/graph.dir/lib.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/graph.dir/lib.cpp.i"
-	/sbin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/szjaniak/Documents/Inf/semestr4/AOD/lista3/lib.cpp > CMakeFiles/graph.dir/lib.cpp.i
+	/usr/sbin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/szjaniak/Inf/semestr4/AOD/lista3/lib.cpp > CMakeFiles/graph.dir/lib.cpp.i
 
 CMakeFiles/graph.dir/lib.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/graph.dir/lib.cpp.s"
-	/sbin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/szjaniak/Documents/Inf/semestr4/AOD/lista3/lib.cpp -o CMakeFiles/graph.dir/lib.cpp.s
+	/usr/sbin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/szjaniak/Inf/semestr4/AOD/lista3/lib.cpp -o CMakeFiles/graph.dir/lib.cpp.s
 
 # Object files for target graph
 graph_OBJECTS = \
@@ -93,7 +93,7 @@ graph_EXTERNAL_OBJECTS =
 libgraph.a: CMakeFiles/graph.dir/lib.cpp.o
 libgraph.a: CMakeFiles/graph.dir/build.make
 libgraph.a: CMakeFiles/graph.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/szjaniak/Documents/Inf/semestr4/AOD/lista3/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX static library libgraph.a"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/szjaniak/Inf/semestr4/AOD/lista3/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX static library libgraph.a"
 	$(CMAKE_COMMAND) -P CMakeFiles/graph.dir/cmake_clean_target.cmake
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/graph.dir/link.txt --verbose=$(VERBOSE)
 
@@ -106,6 +106,6 @@ CMakeFiles/graph.dir/clean:
 .PHONY : CMakeFiles/graph.dir/clean
 
 CMakeFiles/graph.dir/depend:
-	cd /home/szjaniak/Documents/Inf/semestr4/AOD/lista3/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/szjaniak/Documents/Inf/semestr4/AOD/lista3 /home/szjaniak/Documents/Inf/semestr4/AOD/lista3 /home/szjaniak/Documents/Inf/semestr4/AOD/lista3/build /home/szjaniak/Documents/Inf/semestr4/AOD/lista3/build /home/szjaniak/Documents/Inf/semestr4/AOD/lista3/build/CMakeFiles/graph.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/szjaniak/Inf/semestr4/AOD/lista3/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/szjaniak/Inf/semestr4/AOD/lista3 /home/szjaniak/Inf/semestr4/AOD/lista3 /home/szjaniak/Inf/semestr4/AOD/lista3/build /home/szjaniak/Inf/semestr4/AOD/lista3/build /home/szjaniak/Inf/semestr4/AOD/lista3/build/CMakeFiles/graph.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/graph.dir/depend
 

@@ -1,4 +1,4 @@
-set(CMAKE_CXX_COMPILER "/sbin/c++")
+set(CMAKE_CXX_COMPILER "/usr/sbin/c++")
 set(CMAKE_CXX_COMPILER_ARG1 "")
 set(CMAKE_CXX_COMPILER_ID "GNU")
 set(CMAKE_CXX_COMPILER_VERSION "13.1.1")
@@ -22,11 +22,11 @@ set(CMAKE_CXX_SIMULATE_VERSION "")
 
 
 
-set(CMAKE_AR "/sbin/ar")
-set(CMAKE_CXX_COMPILER_AR "/sbin/gcc-ar")
-set(CMAKE_RANLIB "/sbin/ranlib")
-set(CMAKE_CXX_COMPILER_RANLIB "/sbin/gcc-ranlib")
-set(CMAKE_LINKER "/sbin/ld")
+set(CMAKE_AR "/usr/sbin/ar")
+set(CMAKE_CXX_COMPILER_AR "/usr/sbin/gcc-ar")
+set(CMAKE_RANLIB "/usr/sbin/ranlib")
+set(CMAKE_CXX_COMPILER_RANLIB "/usr/sbin/gcc-ranlib")
+set(CMAKE_LINKER "/usr/sbin/ld")
 set(CMAKE_MT "")
 set(CMAKE_COMPILER_IS_GNUCXX 1)
 set(CMAKE_CXX_COMPILER_LOADED 1)

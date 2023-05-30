@@ -4,10 +4,19 @@
 #include <queue>
 #include <algorithm>
 #include <stdio.h>
+#include <cmath>
+#include <limits>
 
 #include "radixheap.hpp"
 
 #define INF 0x3f3f3f3f
+
+struct bucketsradix
+{
+    std::list<size_t> v_list;
+    size_t range_a;
+    size_t range_b;
+};
 
 Graph::Graph(const size_t quantity, const size_t weight)
 {
@@ -20,7 +29,7 @@ auto Graph::add_edge(const size_t vert1, const size_t vert2, const size_t weight
 {
     if (weight > this->max_weight) this->max_weight = weight;
     adj[vert1].push_back(std::make_pair(vert2, weight));
-    adj[vert2].push_back(std::make_pair(vert1, weight));   
+    adj[vert2].push_back(std::make_pair(vert1, weight));
 }
 
 auto Graph::dijkstra_classic_ss(const size_t src) -> distances
@@ -32,7 +41,7 @@ auto Graph::dijkstra_classic_ss(const size_t src) -> distances
     {
         dist[i].first = INF;
     }
-    
+
     Q.push(std::make_pair(0, src));
     dist[src].first = 0;
 
@@ -89,10 +98,10 @@ auto Graph::dial_ss(const size_t src) -> distances
     {
         while (B[idx].size() == 0 && idx < max_weight * node_quantity)
             idx++;
- 
+
         if (idx == max_weight * node_quantity)
             break;
- 
+
         auto u = B[idx].front();
         B[idx].pop_front();
 
@@ -100,7 +109,7 @@ auto Graph::dial_ss(const size_t src) -> distances
         {
             auto v = (*i).first;
             auto weight = (*i).second;
- 
+
             auto du = dist[u].first;
             auto dv = dist[v].first;
 
@@ -108,7 +117,7 @@ auto Graph::dial_ss(const size_t src) -> distances
             {
                 if (dv != INF)
                     B[dv].erase(dist[v].second);
- 
+
                 dist[v].first = du + weight;
                 dv = dist[v].first;
 
@@ -129,65 +138,129 @@ auto Graph::dial_p2p(const size_t start, const size_t goal) -> size_t
     return dist[goal].first;
 }
 
-auto Graph::radix_heap_ss(const size_t src) -> distances
+auto Graph::radix_heap_ss(const size_t src) -> std::vector<int>
 {
-    distances dist(node_quantity);
-    // RadixHeap heap(node_quantity);    
+    std::vector<int> dist(node_quantity);
 
-    // bool* s = new bool[node_quantity];
-    // bool* f = new bool[node_quantity];
+    for (size_t i = 0; i < node_quantity; i++)
+    {
+        dist[i] = std::numeric_limits<int>::max();
+    }
 
-    // int v, w;
-    // int distance;
+    dist[src] = 0;
+    int no_buck = log2(std::numeric_limits<int>::max());
 
-    // for (size_t v = 0; v < node_quantity; v++)
-    // {
-    //     s[v] = false;
-    //     f[v] = false;
-    // }
+    std::vector<bucketsradix> buckets(no_buck);
 
-    // dist[src].first = 0;
-    // f[src]= true;
-    // heap.insert(src, 0);
+    for (int i = 0; i < no_buck; i++)
+    {
+        buckets[i].range_a = floor(pow(2, i - 1));
+        buckets[i].range_b = pow(2, i) - 1;
+    }
 
-    // while (heap.nItems() > 0)
-    // {
-    //     v = heap.deleteMin();
+    buckets[0].v_list.push_front(src);
+    long unsigned long idx;
 
-    //     s[v] = true;
-    //     f[v] = false;
+    while (true)
+    {
+        idx = 0;
+        while (buckets[idx].v_list.size() == 0 && idx < buckets.size())
+        {
+            idx++;
+        }
 
-    //     for (auto edge = adj[v].begin(); edge != adj[v].end(); edge++)
-    //     {
-    //         w = edge->first;
+        if (idx == buckets.size()) break;
 
-    //         if (s[w] == false)
-    //         {
-    //             auto weight = (*edge).second;
-    //             auto v = (*edge).first;
-    //             //distance = dist[v].first + (*edge).second;
+        int u = buckets[idx].v_list.front();
 
-    //             auto dv = dist[v].first;
-    //             distance = dv + weight;
+        if (buckets[idx].range_b - buckets[idx].range_a + 1 == 1)
+        {
+            buckets[idx].v_list.pop_front();
+        }
+        else
+        {
+            int minv;
+            int mindist = std::numeric_limits<int>::max();
 
-    //             if (distance < dist[w].first)
-    //             {
-    //                 dist[w].first = distance;
+            for (auto v = buckets[idx].v_list.begin(); v != buckets[idx].v_list.end(); ++v)
+            {
+                if (dist[*v] < mindist)
+                {
+                    mindist = dist[*v];
+                    minv = *v;
+                }
+            }
 
-    //                 if (f[w])
-    //                 {
-    //                     heap.decreaseKey(w, distance);
-    //                 }
-    //                 else
-    //                 {
-    //                     heap.insert(w, distance);
-    //                     f[w] = true;
-    //                 }
-    //             }
-    //         }
-    //     }
-    // }
+            u = minv;
+            for (auto i = buckets[idx].v_list.begin(); i != buckets[idx].v_list.end(); ++i)
+            {
+                if (*i < u)
+                {
+                    buckets[idx].v_list.erase(i);
+                    break;
+                }
+            }
+
+            for(int i = 0; i < idx; i++)
+            {
+                buckets[i].range_a = mindist +  floor(pow(2, i - 1));
+                buckets[i].range_b =  mindist + pow(2, i) - 1;
+            }
+            buckets[idx -1].range_b = buckets[idx].range_b;
+            //determine the correct buckets
+            for(auto v = buckets[idx].v_list.begin(); v != buckets[idx].v_list.end(); ++v)
+            {
+                for(int i = idx - 1; i >= 0; i--)
+                {
+                    if(dist[*v] >= buckets[i].range_a && dist[*v] <= buckets[i].range_b)
+                    {
+                        buckets[i].v_list.push_front(*v);
+                        break;
+                    }
+                }
+            }
+            // mark bucket as empty
+            buckets[idx].range_a = 1;
+            buckets[idx].range_b = 0;
+            buckets[idx].v_list.clear();
+        }
+
+        for(auto i = adj[u].begin(); i != adj[u].end(); i++)
+        {
+            int v = (*i).first;
+            int weight = (*i).second;
+            int dv = dist[v];
+            int du = dist[u];
+
+            if(dv > du + weight)
+            {
+                if (dv != std::numeric_limits<int>::max())
+                {
+                    int tmp = 0;
+                    // check where was v before
+                    while (!(buckets[tmp].range_a <= dv && buckets[tmp].range_b >= dv))
+                        tmp++;
+                    // remove from prev bucket
+                    for(auto j = buckets[tmp].v_list.begin(); j != buckets[tmp].v_list.end(); j++)
+                    {
+                        if(*j == v)
+                        {
+                            buckets[tmp].v_list.erase(j);
+                            break;
+                        }
+                    }
+                }
+
+                int b = 0;
+                // check where to put v
+                while (!(buckets[b].range_a <= du + weight && buckets[b].range_b >= du + weight))
+                    b++;
+
+                dist[v] = du + weight;    // new dist
+                buckets[b].v_list.push_front(v);    // new bucket
+            }
+        }
+    }
 
     return dist;
-
 }

@@ -1,7 +1,7 @@
 #include <cstdio>
 
-#include "lib.hpp"
-#include "radixheap.hpp"
+#include "../lib.hpp"
+#include "../radixheap.hpp"
 
 void take_input();
 void print_dist(const distances dist, const size_t node_quantity);
@@ -13,11 +13,19 @@ void print_dist(const distances dist, const size_t node_quantity)
         printf("%zu \t %zu\n", i, dist[i].first);
 }
 
+void print_dist_radix(const std::vector<int> dist, const size_t node_quantity)
+{
+    for (auto d : dist)
+    {
+        printf("%d\n", d);
+    }
+}
+
 int main(void)
 {
     size_t V = 9;
     Graph g(V, 0);
- 
+
     // making above shown graph
     g.add_edge(0, 1, 4);
     g.add_edge(0, 7, 8);
@@ -33,7 +41,7 @@ int main(void)
     g.add_edge(6, 7, 1);
     g.add_edge(6, 8, 6);
     g.add_edge(7, 8, 7);
- 
+
     // maximum weighted edge - 14
     // g.dial_ss(0);
     // printf("\n");
@@ -44,10 +52,9 @@ int main(void)
     printf("\n");
 
     auto d = g.dijkstra_classic_p2p(2, 4);
-    printf("%zu", d);
 
     auto d2 = g.radix_heap_ss(2);
-    print_dist(d2, V);
+    print_dist_radix(d2, V);
 
     return 0;
 }

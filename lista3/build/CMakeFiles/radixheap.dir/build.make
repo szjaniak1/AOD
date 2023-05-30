@@ -53,10 +53,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/szjaniak/Documents/Inf/semestr4/AOD/lista3
+CMAKE_SOURCE_DIR = /home/szjaniak/Inf/semestr4/AOD/lista3
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/szjaniak/Documents/Inf/semestr4/AOD/lista3/build
+CMAKE_BINARY_DIR = /home/szjaniak/Inf/semestr4/AOD/lista3/build
 
 # Include any dependencies generated for this target.
 include CMakeFiles/radixheap.dir/depend.make
@@ -70,18 +70,18 @@ include CMakeFiles/radixheap.dir/progress.make
 include CMakeFiles/radixheap.dir/flags.make
 
 CMakeFiles/radixheap.dir/radixheap.cpp.o: CMakeFiles/radixheap.dir/flags.make
-CMakeFiles/radixheap.dir/radixheap.cpp.o: /home/szjaniak/Documents/Inf/semestr4/AOD/lista3/radixheap.cpp
+CMakeFiles/radixheap.dir/radixheap.cpp.o: /home/szjaniak/Inf/semestr4/AOD/lista3/radixheap.cpp
 CMakeFiles/radixheap.dir/radixheap.cpp.o: CMakeFiles/radixheap.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/szjaniak/Documents/Inf/semestr4/AOD/lista3/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/radixheap.dir/radixheap.cpp.o"
-	/sbin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/radixheap.dir/radixheap.cpp.o -MF CMakeFiles/radixheap.dir/radixheap.cpp.o.d -o CMakeFiles/radixheap.dir/radixheap.cpp.o -c /home/szjaniak/Documents/Inf/semestr4/AOD/lista3/radixheap.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/szjaniak/Inf/semestr4/AOD/lista3/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/radixheap.dir/radixheap.cpp.o"
+	/usr/sbin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/radixheap.dir/radixheap.cpp.o -MF CMakeFiles/radixheap.dir/radixheap.cpp.o.d -o CMakeFiles/radixheap.dir/radixheap.cpp.o -c /home/szjaniak/Inf/semestr4/AOD/lista3/radixheap.cpp
 
 CMakeFiles/radixheap.dir/radixheap.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/radixheap.dir/radixheap.cpp.i"
-	/sbin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/szjaniak/Documents/Inf/semestr4/AOD/lista3/radixheap.cpp > CMakeFiles/radixheap.dir/radixheap.cpp.i
+	/usr/sbin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/szjaniak/Inf/semestr4/AOD/lista3/radixheap.cpp > CMakeFiles/radixheap.dir/radixheap.cpp.i
 
 CMakeFiles/radixheap.dir/radixheap.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/radixheap.dir/radixheap.cpp.s"
-	/sbin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/szjaniak/Documents/Inf/semestr4/AOD/lista3/radixheap.cpp -o CMakeFiles/radixheap.dir/radixheap.cpp.s
+	/usr/sbin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/szjaniak/Inf/semestr4/AOD/lista3/radixheap.cpp -o CMakeFiles/radixheap.dir/radixheap.cpp.s
 
 # Object files for target radixheap
 radixheap_OBJECTS = \
@@ -93,7 +93,7 @@ radixheap_EXTERNAL_OBJECTS =
 libradixheap.a: CMakeFiles/radixheap.dir/radixheap.cpp.o
 libradixheap.a: CMakeFiles/radixheap.dir/build.make
 libradixheap.a: CMakeFiles/radixheap.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/szjaniak/Documents/Inf/semestr4/AOD/lista3/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX static library libradixheap.a"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/szjaniak/Inf/semestr4/AOD/lista3/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX static library libradixheap.a"
 	$(CMAKE_COMMAND) -P CMakeFiles/radixheap.dir/cmake_clean_target.cmake
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/radixheap.dir/link.txt --verbose=$(VERBOSE)
 
@@ -106,6 +106,6 @@ CMakeFiles/radixheap.dir/clean:
 .PHONY : CMakeFiles/radixheap.dir/clean
 
 CMakeFiles/radixheap.dir/depend:
-	cd /home/szjaniak/Documents/Inf/semestr4/AOD/lista3/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/szjaniak/Documents/Inf/semestr4/AOD/lista3 /home/szjaniak/Documents/Inf/semestr4/AOD/lista3 /home/szjaniak/Documents/Inf/semestr4/AOD/lista3/build /home/szjaniak/Documents/Inf/semestr4/AOD/lista3/build /home/szjaniak/Documents/Inf/semestr4/AOD/lista3/build/CMakeFiles/radixheap.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/szjaniak/Inf/semestr4/AOD/lista3/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/szjaniak/Inf/semestr4/AOD/lista3 /home/szjaniak/Inf/semestr4/AOD/lista3 /home/szjaniak/Inf/semestr4/AOD/lista3/build /home/szjaniak/Inf/semestr4/AOD/lista3/build /home/szjaniak/Inf/semestr4/AOD/lista3/build/CMakeFiles/radixheap.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/radixheap.dir/depend
 

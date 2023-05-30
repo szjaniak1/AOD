@@ -1,5 +1,5 @@
 CMakeFiles/AOD3.dir/main.cpp.o: \
- /home/szjaniak/Documents/Inf/semestr4/AOD/lista3/build/main.cpp \
+ /home/szjaniak/Inf/semestr4/AOD/lista3/build/main.cpp \
  /usr/include/stdc-predef.h /usr/include/c++/13.1.1/cstdio \
  /usr/include/c++/13.1.1/x86_64-pc-linux-gnu/bits/c++config.h \
  /usr/include/c++/13.1.1/x86_64-pc-linux-gnu/bits/os_defines.h \
@@ -19,7 +19,8 @@ CMakeFiles/AOD3.dir/main.cpp.o: \
  /usr/include/bits/types/FILE.h /usr/include/bits/types/struct_FILE.h \
  /usr/include/bits/types/cookie_io_functions_t.h \
  /usr/include/bits/stdio_lim.h /usr/include/bits/floatn.h \
- /usr/include/bits/floatn-common.h /usr/local/include/lib.hpp \
+ /usr/include/bits/floatn-common.h \
+ /home/szjaniak/Inf/semestr4/AOD/lista3/build/../lib.hpp \
  /usr/include/c++/13.1.1/list \
  /usr/include/c++/13.1.1/bits/requires_hosted.h \
  /usr/include/c++/13.1.1/bits/stl_algobase.h \
@@ -67,4 +68,5 @@ CMakeFiles/AOD3.dir/main.cpp.o: \
  /usr/include/c++/13.1.1/bits/refwrap.h \
  /usr/include/c++/13.1.1/bits/stl_function.h \
  /usr/include/c++/13.1.1/backward/binders.h \
- /usr/include/c++/13.1.1/bits/vector.tcc /usr/local/include/radixheap.hpp
+ /usr/include/c++/13.1.1/bits/vector.tcc \
+ /home/szjaniak/Inf/semestr4/AOD/lista3/build/../radixheap.hpp
