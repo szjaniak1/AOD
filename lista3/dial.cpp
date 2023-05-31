@@ -33,16 +33,16 @@ int main(int argc, char* argv[])
             mode = 2;
         }
     }
-    Graph* g = new Graph(0, 0);
-    g->create_graph_from_path(data_path);
 
-    std::list<int> src = g->get_sources(sources_path, mode);
+    Graph *g = create_graph_from_path(data_path);
+
+    std::list<int32_t> src = get_sources(sources_path, mode);
 
     if(mode == 1)
     {
         while(!src.empty())
         {
-            int s = src.back();
+            int32_t s = src.back();
             auto dist = g->dial_ss(s);
             src.pop_back();
         }
@@ -51,9 +51,9 @@ int main(int argc, char* argv[])
     {
         while (!src.empty())
         {
-            int dest = src.back();
+            int32_t dest = src.back();
             src.pop_back();
-            int s = src.back();
+            int32_t s = src.back();
             auto dist = g->dial_p2p(s, dest);
             src.pop_back();
             std::cout << dist << std::endl;

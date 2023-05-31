@@ -3,11 +3,9 @@
 #include <utility>
 #include <queue>
 #include <algorithm>
-#include <stdio.h>
 #include <cmath>
+#include <cstring>
 #include <limits>
-#include <fstream>
-#include <string.h>
 
 #define INF 0x3f3f3f3f
 
@@ -18,10 +16,9 @@ struct bucketsradix
     size_t range_b;
 };
 
-Graph::Graph(const size_t quantity, const size_t weight)
+Graph::Graph(const size_t quantity)
 {
     this->node_quantity = quantity;
-    this->max_weight = weight;
     this->adj = new std::list<pair>[node_quantity];
 }
 
@@ -78,28 +75,28 @@ auto Graph::dijkstra_classic_p2p(const size_t start, const size_t goal) -> int32
     return dist[goal].first;
 }
 
-auto Graph::dial_ss(const size_t src) -> distances
+auto Graph::dial_ss(const int32_t src) -> std::vector<int32_t>
 {
     distances dist(node_quantity);
 
     for (size_t i = 0; i < node_quantity; i++)
     {
-        dist[i].first = INF;
+        dist[i].first = std::numeric_limits<int32_t>::max();
     }
-
-    std::list<int32_t> B[max_weight * node_quantity + 1];
-
-    B[0].push_back((int32_t)src);
+    
+    std::vector<std::list<int32_t>> B(max_weight * 3);
+    
+    B[0].push_back(src);
     dist[src].first = 0;
-
-    size_t idx = 0;
+    
+    long unsigned long idx = 0;
 
     while (true)
     {
-        while (B[idx].size() == 0 && idx < max_weight * node_quantity)
+        while (B[idx].size() == 0 && idx < B.size())
             idx++;
 
-        if (idx == max_weight * node_quantity)
+        if (idx == max_weight * 3)
             break;
 
         auto u = B[idx].front();
@@ -111,15 +108,20 @@ auto Graph::dial_ss(const size_t src) -> distances
             auto weight = (*i).second;
 
             auto du = dist[u].first;
-            auto dv = dist[v].first;
+            int32_t dv = dist[v].first;
 
             if (dv > du + weight)
             {
-                if (dv != INF)
+                if (dv != std::numeric_limits<int32_t>::max())
                     B[dv].erase(dist[v].second);
 
                 dist[v].first = du + weight;
                 dv = dist[v].first;
+
+                if (dv > B.size())
+                {
+                    B.resize(dv + max_weight * 2);
+                }
 
                 B[dv].push_front(v);
 
@@ -128,14 +130,20 @@ auto Graph::dial_ss(const size_t src) -> distances
         }
     }
 
-    return dist;
+    std::vector<int32_t> d(node_quantity);
+    for (size_t i = 0; i < node_quantity; ++i)
+    {
+        d[i] = dist[i].first;
+    }
+
+    return d;
 }
 
 auto Graph::dial_p2p(const size_t start, const size_t goal) -> int32_t
 {
     auto dist = dial_ss(start);
 
-    return dist[goal].first;
+    return dist[goal];
 }
 
 auto Graph::radix_heap_ss(const size_t src) -> std::vector<int>
@@ -271,10 +279,12 @@ auto Graph::radix_heap_p2p(const size_t start, const size_t goal) -> int32_t
     return dist[goal];
 }
 
-auto Graph::create_graph_from_path(char *path) -> void
+auto create_graph_from_path(char *path) -> Graph*
 {
     std::fstream file(path);
     std::string text;
+
+    Graph *g = new Graph(1);
 
     while (getline(file, text))
     {
@@ -293,24 +303,21 @@ auto Graph::create_graph_from_path(char *path) -> void
             p = strtok(NULL, " ");
             int weight = atoi(p);
 
-            if(weight > max_weight)
-            {
-                max_weight = weight;
-            }
-            add_edge(src - 1, dest - 1, weight);
+            g->add_edge(src - 1, dest - 1, weight);
         }
         else if (strcmp(p, "p") == 0)
         {
             p = strtok(NULL, " ");
             p = strtok(NULL, " ");
-            node_quantity = atoi(p);
+            g = new Graph(atoi(p));
         }
         delete[] line;
     }
     file.close();
+    return g;
 }
 
-auto Graph::get_sources(char *path, int mode) -> std::list<int32_t>
+auto get_sources(char *path, int mode) -> std::list<int32_t>
 {
     std::fstream file(path);
     std::list<int32_t> src;

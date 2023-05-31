@@ -3,10 +3,10 @@
 gr_suffix='.gr'
 ss_suffix='.ss'
 itr=1
-readarray -t usa_graphs < <(ls ch9-1.1/inputs/USA-road-d/*.gr)
-readarray -t rand_graphs < <(ls ch9-1.1/inputs/Random4-C/*.gr)
-readarray -t square_graphs < <(ls ch9-1.1/inputs/Square-C/*.gr)
-readarray -t long_graphs < <(ls ch9-1.1/inputs/Long-n/*.gr)
+readarray -t usa_graphs < <(ls ./generator/inputs/USA-road-d/*.gr)
+readarray -t rand_graphs < <(ls ./generator/inputs/Random4-C/*.gr)
+readarray -t square_graphs < <(ls ./generator/inputs/Square-C/*.gr)
+readarray -t long_graphs < <(ls ./generator/inputs/Long-n/*.gr)
 
 make dial
 make radix
