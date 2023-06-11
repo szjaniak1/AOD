@@ -6,14 +6,66 @@
 #include <cmath>
 #include <cstring>
 #include <limits>
+#include <array>
 
 #define INF 0x3f3f3f3f
 
-struct bucketsradix
+template <typename key_t, typename val_t>
+struct RadixHeap
 {
-    std::list<int32_t> v_list;
-    size_t range_a;
-    size_t range_b;
+    static constexpr int bit = sizeof(key_t) * 8;
+    std::array<std::vector<std::pair<key_t, val_t> >, bit > vs;
+
+    size_t sz;
+    key_t last;
+
+    RadixHeap() : sz(0), last(0) {}
+
+    bool empty() const { return sz == 0; };
+    size_t size() const { return sz; }
+
+    inline int getbit(int a) const
+    {
+        return a ? bit - __builtin_clz(a) : 0;
+    }
+
+    inline int getbit(int64_t a) const
+    {
+        return a ? bit - __builtin_clzll(a) : 0;
+    }
+
+    void push(const key_t &key, const val_t &val)
+    {
+        sz++;
+        vs[getbit(key ^ last)].emplace_back(key, val);
+    }
+
+    std::pair<key_t, val_t> pop()
+    {
+        if (vs[0].empty())
+        {
+            int idx = 1;
+            while (vs[idx].empty()) 
+            {
+                idx++;
+            }
+
+            last = std::min_element(vs[idx].begin(), vs[idx].end())->first;
+
+            for (auto &p : vs[idx])
+            {
+                vs[getbit(p.first ^ last)].emplace_back(p);
+            }
+
+            vs[idx].clear();
+        }
+
+        --sz;
+        auto res = vs[0].back();
+        vs[0].pop_back();
+
+        return res;
+    }
 };
 
 Graph::Graph(const size_t quantity)
@@ -146,137 +198,41 @@ auto Graph::dial_p2p(const size_t start, const size_t goal) -> int32_t
     return dist[goal];
 }
 
-auto Graph::radix_heap_ss(const size_t src) -> std::vector<int>
+auto Graph::dijkstra_radix_ss(int src) -> std::vector<int32_t>
 {
-    std::vector<int> dist(node_quantity);
+    const auto inf = std::numeric_limits<int32_t>::max();
+    std::vector<int32_t> dist(node_quantity, inf);
 
-    for (size_t i = 0; i < node_quantity; i++)
-    {
-        dist[i] = std::numeric_limits<int>::max();
-    }
-
+    RadixHeap<int32_t, int32_t> heap;
     dist[src] = 0;
-    int no_buck = log2(std::numeric_limits<int>::max());
 
-    std::vector<bucketsradix> buckets(no_buck);
-
-    for (int i = 0; i < no_buck; i++)
+    heap.push(dist[src], src);
+    while (!heap.empty())
     {
-        buckets[i].range_a = floor(pow(2, i - 1));
-        buckets[i].range_b = pow(2, i) - 1;
-    }
+        int cost;
+        int idx;
 
-    buckets[0].v_list.push_front(src);
-    long unsigned long idx;
+        std::tie(cost, idx) = heap.pop();
+        if (dist[idx] < cost) continue;
 
-    while (true)
-    {
-        idx = 0;
-        while (buckets[idx].v_list.size() == 0 && idx < buckets.size())
+        for (auto &e : adj[idx])
         {
-            idx++;
-        }
+            auto next_cost = cost + e.second;
 
-        if (idx == buckets.size()) break;
+            if (dist[e.first] <= next_cost) continue;
 
-        int u = buckets[idx].v_list.front();
-
-        if (buckets[idx].range_b - buckets[idx].range_a + 1 == 1)
-        {
-            buckets[idx].v_list.pop_front();
-        }
-        else
-        {
-            int minv;
-            int mindist = std::numeric_limits<int>::max();
-
-            for (auto v = buckets[idx].v_list.begin(); v != buckets[idx].v_list.end(); ++v)
-            {
-                if (dist[*v] < mindist)
-                {
-                    mindist = dist[*v];
-                    minv = *v;
-                }
-            }
-
-            u = minv;
-            for (auto i = buckets[idx].v_list.begin(); i != buckets[idx].v_list.end(); ++i)
-            {
-                if (*i < u)
-                {
-                    buckets[idx].v_list.erase(i);
-                    break;
-                }
-            }
-
-            for(int i = 0; i < idx; i++)
-            {
-                buckets[i].range_a = mindist +  floor(pow(2, i - 1));
-                buckets[i].range_b =  mindist + pow(2, i) - 1;
-            }
-            buckets[idx -1].range_b = buckets[idx].range_b;
-            //determine the correct buckets
-            for(auto v = buckets[idx].v_list.begin(); v != buckets[idx].v_list.end(); ++v)
-            {
-                for(int i = idx - 1; i >= 0; i--)
-                {
-                    if(dist[*v] >= buckets[i].range_a && dist[*v] <= buckets[i].range_b)
-                    {
-                        buckets[i].v_list.push_front(*v);
-                        break;
-                    }
-                }
-            }
-            // mark bucket as empty
-            buckets[idx].range_a = 1;
-            buckets[idx].range_b = 0;
-            buckets[idx].v_list.clear();
-        }
-
-        for(auto i = adj[u].begin(); i != adj[u].end(); i++)
-        {
-            int v = (*i).first;
-            int weight = (*i).second;
-            int dv = dist[v];
-            int du = dist[u];
-
-            if(dv > du + weight)
-            {
-                if (dv != std::numeric_limits<int>::max())
-                {
-                    int tmp = 0;
-                    // check where was v before
-                    while (!(buckets[tmp].range_a <= dv && buckets[tmp].range_b >= dv))
-                        tmp++;
-                    // remove from prev bucket
-                    for(auto j = buckets[tmp].v_list.begin(); j != buckets[tmp].v_list.end(); j++)
-                    {
-                        if(*j == v)
-                        {
-                            buckets[tmp].v_list.erase(j);
-                            break;
-                        }
-                    }
-                }
-
-                int b = 0;
-                // check where to put v
-                while (!(buckets[b].range_a <= du + weight && buckets[b].range_b >= du + weight))
-                    b++;
-
-                dist[v] = du + weight;    // new dist
-                buckets[b].v_list.push_front(v);    // new bucket
-            }
+            dist[e.first] = next_cost;
+            heap.push(dist[e.first], e.first);
         }
     }
 
     return dist;
 }
 
-auto Graph::radix_heap_p2p(const size_t start, const size_t goal) -> int32_t
+auto Graph::dijkstra_radix_p2p(int32_t src, int32_t dest) -> int32_t
 {
-    const auto dist = radix_heap_ss(start);
-    return dist[goal];
+    const auto dist = dijkstra_radix_ss(src);
+    return dist[dest];
 }
 
 auto create_graph_from_path(char *path) -> Graph*

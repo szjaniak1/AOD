@@ -26,8 +26,8 @@ class Graph
         auto add_edge(const int32_t vert1, const int32_t vert2, const size_t weight) -> void;
         auto dijkstra_classic_ss(const size_t src) -> distances;
         auto dijkstra_classic_p2p(const size_t start, const size_t goal) -> int32_t;
-        auto dial_ss(int src) -> std::vector<int>;
+        auto dial_ss(const int32_t src) -> std::vector<int32_t>;
         auto dial_p2p(const size_t start, const size_t goal) -> int32_t;
-        auto radix_heap_ss(const size_t src) -> std::vector<int>;
-        auto radix_heap_p2p(const size_t start, const size_t goal) -> int32_t;
+        auto dijkstra_radix_ss(int32_t src) -> std::vector<int32_t>;
+        auto dijkstra_radix_p2p(int32_t src, int32_t dest) -> int32_t;
 };
