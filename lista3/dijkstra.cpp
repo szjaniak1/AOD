@@ -33,14 +33,14 @@ int main(int argc, char* argv[])
             sources_path = argv[i+1];
             mode = 2;
         }
-        // else if (strcmp(argv[i], "-oss") == 0)
-        // {
-        //     results_path = argv[i + 1];
-        // }
-        // else if (strcmp(argv[i], "-op2p") == 0)
-        // {
-        //     results_path = argv[i + 1];
-        // }
+        else if (strcmp(argv[i], "-oss") == 0)
+        {
+            results_path = argv[i + 1];
+        }
+        else if (strcmp(argv[i], "-op2p") == 0)
+        {
+            results_path = argv[i + 1];
+        }
     }
     
     Graph *g = create_graph_from_path(data_path);
@@ -50,7 +50,7 @@ int main(int argc, char* argv[])
     
     if(mode == 1)
     {
-        // std::ofstream my_file(results_path);
+        std::ofstream my_file(results_path);
         long long avg_time = 0;
         while(!src.empty())
         {
@@ -62,11 +62,11 @@ int main(int argc, char* argv[])
             avg_time += duaration.count();
             src.pop_back();
         }
-        // my_file << "avg_t: " << avg_time << " msec" << std::endl;
+        my_file << "avg_t: " << avg_time << " msec" << std::endl;
     }
     else if (mode == 2)
     {
-        // std::ofstream my_file(results_path);
+        std::ofstream my_file(results_path);
         while (!src.empty())
         {
             int dest = src.back();
@@ -74,7 +74,7 @@ int main(int argc, char* argv[])
             int s = src.back();
             auto dist = g->dijkstra_classic_p2p(s, dest);
             src.pop_back();
-            // my_file << "d: " << s << " dest:" << dist << std::endl;
+            my_file << "d: " << s << " dest:" << dist << std::endl;
         }
     }
 
