@@ -6,7 +6,7 @@
 
 int main(int argc, char* argv[])
 {
-    int mode; // 1 - time measure, 2 - shortest path
+    int mode = 0; // 1 - time measure, 2 - shortest path
     char* data_path;
     char* sources_path;
     char* results_path;
@@ -50,7 +50,7 @@ int main(int argc, char* argv[])
     
     if(mode == 1)
     {
-        std::ofstream my_file(results_path);
+        // std::ofstream my_file(results_path);
         long long avg_time = 0;
         while(!src.empty())
         {
@@ -62,11 +62,11 @@ int main(int argc, char* argv[])
             avg_time += duaration.count();
             src.pop_back();
         }
-        my_file << "avg_t: " << avg_time << " msec" << std::endl;
+        // my_file << "avg_t: " << avg_time << " msec" << std::endl;
     }
     else if (mode == 2)
     {
-        std::ofstream my_file(results_path);
+        // std::ofstream my_file(results_path);
         while (!src.empty())
         {
             int dest = src.back();
@@ -74,7 +74,7 @@ int main(int argc, char* argv[])
             int s = src.back();
             auto dist = g->dial_p2p(s, dest);
             src.pop_back();
-            my_file << "d: " << s << " dest:" << dist << std::endl;
+            // my_file << "d: " << s << " dest:" << dist << std::endl;
         }
     }
 

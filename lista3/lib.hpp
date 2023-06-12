@@ -7,7 +7,6 @@
 #include <fstream>
 #include <string.h>
 
-typedef std::vector<std::pair<int32_t, std::list<int32_t>::iterator> > distances;
 typedef std::pair<int32_t, int32_t> pair;
 
 class Graph;
@@ -18,16 +17,17 @@ class Graph
 {
     size_t node_quantity;
     size_t max_weight;
-    std::list<pair>* adj;
+    std::vector<std::vector<pair>> adj; 
 
     public:
         Graph(const size_t node_quantity);
 
         auto add_edge(const int32_t vert1, const int32_t vert2, const size_t weight) -> void;
-        auto dijkstra_classic_ss(const size_t src) -> distances;
+        auto dijkstra_classic_ss(const size_t src) -> std::vector<int32_t>;
         auto dijkstra_classic_p2p(const size_t start, const size_t goal) -> int32_t;
-        auto dial_ss(const int32_t src) -> std::vector<int32_t>;
-        auto dial_p2p(const size_t start, const size_t goal) -> int32_t;
+        auto dial_ss(int32_t src) -> std::vector<int32_t>;
+        auto dial_p2p(size_t start, const size_t goal) -> int32_t;
         auto dijkstra_radix_ss(int32_t src) -> std::vector<int32_t>;
         auto dijkstra_radix_p2p(int32_t src, int32_t dest) -> int32_t;
+        auto get_size(void) -> size_t;
 };

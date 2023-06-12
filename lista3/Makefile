@@ -1,4 +1,4 @@
-CFLAGS = -Wall -pedantic -ggdb3 -O3 -Wno-c++98-compat
+CFLAGS = -Wall -pedantic -ggdb3 -O3
 
 dijkstra: lib.cpp dijkstra.cpp 
 	g++ $(CFLAGS) lib.cpp dijkstra.cpp -o dijkstra

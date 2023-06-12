@@ -68,10 +68,12 @@ struct RadixHeap
     }
 };
 
-Graph::Graph(const size_t quantity)
-{
-    this->node_quantity = quantity;
-    this->adj = new std::list<pair>[node_quantity];
+Graph::Graph(const size_t quantity) : node_quantity(quantity), adj(quantity){}
+
+auto Graph::get_size(void) -> size_t
+{   
+    node_quantity = adj.size();
+    return node_quantity;
 }
 
 auto Graph::add_edge(const int32_t vert1, const int32_t vert2, const size_t weight) -> void
@@ -81,38 +83,28 @@ auto Graph::add_edge(const int32_t vert1, const int32_t vert2, const size_t weig
     adj[vert2].push_back(std::make_pair(vert1, weight));
 }
 
-auto Graph::dijkstra_classic_ss(const size_t src) -> distances
+auto Graph::dijkstra_classic_ss(const size_t src) -> std::vector<int32_t>
 {
-    distances dist(node_quantity);
-    std::priority_queue<pair, std::vector<pair>, std::greater<pair> > Q;
+    std::priority_queue<pair, std::vector<pair>, std::greater<> > Q;
+    std::vector<int32_t> dist(get_size(), std::numeric_limits<int32_t>::max());
 
-    for (size_t i = 0; i < node_quantity; i++)
-    {
-        dist[i].first = INF;
-    }
-
-    Q.push(std::make_pair(0, src));
-    dist[src].first = 0;
+    Q.emplace(0, src);
+    dist[src] = 0;
 
     while (!Q.empty())
     {
         auto u = Q.top().second;
         Q.pop();
 
-        std::list<pair>::iterator i;
-        for (i = adj[u].begin(); i != adj[u].end(); ++i)
+        for (auto i = adj[u].begin(); i != adj[u].end(); ++i)
         {
             auto v = (*i).first;
             auto weight = (*i).second;
 
-            auto du = dist[u].first;
-            auto dv = dist[v].first;
-
-            if (dv > du + weight)
+            if (dist[v] > dist[u] + weight)
             {
-                dist[v].first = du + weight;
-                dv = dist[v].first;
-                Q.push(std::make_pair(dv, v));
+                dist[v] = dist[u] + weight;
+                Q.emplace(dist[v], v);
             }
         }
     }
@@ -124,19 +116,22 @@ auto Graph::dijkstra_classic_p2p(const size_t start, const size_t goal) -> int32
 {
     auto dist = dijkstra_classic_ss(start);
 
-    return dist[goal].first;
+    return dist[goal];
 }
 
-auto Graph::dial_ss(const int32_t src) -> std::vector<int32_t>
+auto Graph::dial_ss(int32_t src) -> std::vector<int32_t>
 {
-    distances dist(node_quantity);
+    std::vector<std::pair<int32_t, std::list<int32_t>::iterator>> dist(get_size());
 
     for (size_t i = 0; i < node_quantity; i++)
     {
         dist[i].first = std::numeric_limits<int32_t>::max();
     }
-    
-    std::vector<std::list<int32_t>> B(max_weight * 3);
+
+    size_t buckets_size;
+    buckets_size = max_weight * 3;
+
+    std::vector<std::list<int32_t>> B(buckets_size);
     
     B[0].push_back(src);
     dist[src].first = 0;
@@ -145,10 +140,10 @@ auto Graph::dial_ss(const int32_t src) -> std::vector<int32_t>
 
     while (true)
     {
-        while (B[idx].size() == 0 && idx < B.size())
+        while (B[idx].empty() && idx < B.size())
             idx++;
 
-        if (idx == max_weight * 3)
+        if (idx >= B.size())
             break;
 
         auto u = B[idx].front();
@@ -160,7 +155,7 @@ auto Graph::dial_ss(const int32_t src) -> std::vector<int32_t>
             auto weight = (*i).second;
 
             auto du = dist[u].first;
-            int32_t dv = dist[v].first;
+            auto dv = dist[v].first;
 
             if (dv > du + weight)
             {
@@ -172,7 +167,7 @@ auto Graph::dial_ss(const int32_t src) -> std::vector<int32_t>
 
                 if (dv > B.size())
                 {
-                    B.resize(dv + max_weight * 2);
+                    B.resize(dv + buckets_size);
                 }
 
                 B[dv].push_front(v);
@@ -201,7 +196,7 @@ auto Graph::dial_p2p(const size_t start, const size_t goal) -> int32_t
 auto Graph::dijkstra_radix_ss(int src) -> std::vector<int32_t>
 {
     const auto inf = std::numeric_limits<int32_t>::max();
-    std::vector<int32_t> dist(node_quantity, inf);
+    std::vector<int32_t> dist(get_size(), inf);
 
     RadixHeap<int32_t, int32_t> heap;
     dist[src] = 0;
