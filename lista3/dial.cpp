@@ -18,7 +18,7 @@ int main(int argc, char* argv[])
         std::cout << "No parameters given" << std::endl;
         return -1;
     }
-    for(size_t i = 1; i < 5; i+=2)
+    for(size_t i = 1; i < 6; i+=2)
     {
         if(strcmp(argv[i], "-d") == 0)
         {
@@ -48,10 +48,9 @@ int main(int argc, char* argv[])
 
     std::list<int32_t> src = get_sources(sources_path, mode);
 
-    
+    std::ofstream my_file(results_path, std::ios::app);
     if(mode == 1)
     {
-        std::ofstream my_file(results_path);
         long long avg_time = 0;
         while(!src.empty())
         {
@@ -63,11 +62,10 @@ int main(int argc, char* argv[])
             avg_time += duaration.count();
             src.pop_back();
         }
-        my_file << "avg_t: " << avg_time << " msec" << std::endl;
+        my_file << "dial: avg_t: " << avg_time << " msec" << std::endl;
     }
     else if (mode == 2)
     {
-        std::ofstream my_file(results_path);
         while (!src.empty())
         {
             int dest = src.back();
@@ -75,7 +73,7 @@ int main(int argc, char* argv[])
             int s = src.back();
             auto dist = g->dial_p2p(s, dest);
             src.pop_back();
-            my_file << "d: " << s << " dest:" << dist << std::endl;
+            my_file << "dial: source: " << s << " dest: " << dest << "distance: " << dist << std::endl;
         }
     }
 

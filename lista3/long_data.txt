@@ -1,0 +1,33 @@
+./generator/inputs/Long-n/Long-n.10.0.ss
+dijkstra: avg_t: 0 msec
+radix: avg_t: 0 msec
+./generator/inputs/Long-n/Long-n.11.0.ss
+dijkstra: avg_t: 0 msec
+radix: avg_t: 0 msec
+./generator/inputs/Long-n/Long-n.12.0.ss
+dijkstra: avg_t: 0 msec
+radix: avg_t: 0 msec
+./generator/inputs/Long-n/Long-n.13.0.ss
+dijkstra: avg_t: 0 msec
+radix: avg_t: 0 msec
+./generator/inputs/Long-n/Long-n.14.0.ss
+dijkstra: avg_t: 2050 msec
+radix: avg_t: 2048 msec
+./generator/inputs/Long-n/Long-n.15.0.ss
+dijkstra: avg_t: 3074 msec
+radix: avg_t: 3014 msec
+./generator/inputs/Long-n/Long-n.16.0.ss
+dijkstra: avg_t: 3282 msec
+radix: avg_t: 3077 msec
+./generator/inputs/Long-n/Long-n.17.0.ss
+dijkstra: avg_t: 3650 msec
+radix: avg_t: 3524 msec
+./generator/inputs/Long-n/Long-n.18.0.ss
+dijkstra: avg_t: 4358 msec
+radix: avg_t: 4450 msec
+./generator/inputs/Long-n/Long-n.19.0.ss
+dijkstra: avg_t: 7736 msec
+./generator/inputs/Long-n/Long-n.20.0.ss
+dijkstra: avg_t: 10674 msec
+./generator/inputs/Long-n/Long-n.21.0.ss
+dijkstra: avg_t: 12780 msec

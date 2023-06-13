@@ -1,6 +1,7 @@
 #include <cstring>
 #include <iostream>
 #include <chrono>
+#include <string>
 
 #include "lib.hpp"
 
@@ -17,7 +18,7 @@ int main(int argc, char* argv[])
         std::cout << "No parameters given" << std::endl;
         return -1;
     }
-    for(size_t i = 1; i < 5; i+=2)
+    for(size_t i = 1; i < 6; i+=2)
     {
         if(strcmp(argv[i], "-d") == 0)
         {
@@ -45,12 +46,16 @@ int main(int argc, char* argv[])
     
     Graph *g = create_graph_from_path(data_path);
 
-    std::list<int32_t> src = get_sources(sources_path, mode);
+    for (size_t i = 0; i < 10; i++)
+    {
+        std::cout << results_path[i];
+    }
 
-    
+    std::list<int32_t> src = get_sources(sources_path, mode);
+    std::ofstream my_file(results_path, std::ios::app);
+
     if(mode == 1)
     {
-        std::ofstream my_file(results_path);
         long long avg_time = 0;
         while(!src.empty())
         {
@@ -62,11 +67,11 @@ int main(int argc, char* argv[])
             avg_time += duaration.count();
             src.pop_back();
         }
-        my_file << "avg_t: " << avg_time << " msec" << std::endl;
+        my_file << "dijkstra: avg_t: " << avg_time << " msec" << std::endl;
+        my_file.flush();
     }
     else if (mode == 2)
     {
-        std::ofstream my_file(results_path);
         while (!src.empty())
         {
             int dest = src.back();
@@ -74,7 +79,7 @@ int main(int argc, char* argv[])
             int s = src.back();
             auto dist = g->dijkstra_classic_p2p(s, dest);
             src.pop_back();
-            my_file << "d: " << s << " dest:" << dist << std::endl;
+            my_file << "dijkstra: source: " << s << " dest: " << dest << "distance: " << dist << std::endl;
         }
     }
 

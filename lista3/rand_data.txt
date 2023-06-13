@@ -1,0 +1,58 @@
+./generator/inputs/Random4-C/Random4-C.0.0.ss
+dijkstra: avg_t: 3308 msec
+dial: avg_t: 3667 msec
+radix: avg_t: 1439 msec
+./generator/inputs/Random4-C/Random4-C.10.0.ss
+dijkstra: avg_t: 4564 msec
+dial: avg_t: 5201 msec
+radix: avg_t: 2420 msec
+./generator/inputs/Random4-C/Random4-C.1.0.ss
+dijkstra: avg_t: 3779 msec
+dial: avg_t: 3585 msec
+radix: avg_t: 1468 msec
+./generator/inputs/Random4-C/Random4-C.11.0.ss
+dijkstra: avg_t: 4377 msec
+dial: avg_t: 6005 msec
+radix: avg_t: 2659 msec
+./generator/inputs/Random4-C/Random4-C.12.0.ss
+dijkstra: avg_t: 4365 msec
+dial: avg_t: 9537 msec
+radix: avg_t: 2762 msec
+./generator/inputs/Random4-C/Random4-C.13.0.ss
+dijkstra: avg_t: 4581 msec
+radix: avg_t: 2645 msec
+./generator/inputs/Random4-C/Random4-C.14.0.ss
+dijkstra: avg_t: 4444 msec
+radix: avg_t: 2613 msec
+./generator/inputs/Random4-C/Random4-C.15.0.ss
+dijkstra: avg_t: 5469 msec
+./generator/inputs/Random4-C/Random4-C.2.0.ss
+dijkstra: avg_t: 4417 msec
+radix: avg_t: 1494 msec
+./generator/inputs/Random4-C/Random4-C.3.0.ss
+dijkstra: avg_t: 4650 msec
+dial: avg_t: 3925 msec
+radix: avg_t: 1526 msec
+./generator/inputs/Random4-C/Random4-C.4.0.ss
+dijkstra: avg_t: 4574 msec
+radix: avg_t: 1575 msec
+./generator/inputs/Random4-C/Random4-C.5.0.ss
+dijkstra: avg_t: 4756 msec
+dial: avg_t: 4138 msec
+radix: avg_t: 1640 msec
+./generator/inputs/Random4-C/Random4-C.6.0.ss
+dijkstra: avg_t: 4620 msec
+dial: avg_t: 4082 msec
+radix: avg_t: 1689 msec
+./generator/inputs/Random4-C/Random4-C.7.0.ss
+dijkstra: avg_t: 4507 msec
+dial: avg_t: 4231 msec
+radix: avg_t: 1789 msec
+./generator/inputs/Random4-C/Random4-C.8.0.ss
+dijkstra: avg_t: 4743 msec
+dial: avg_t: 4449 msec
+radix: avg_t: 1793 msec
+./generator/inputs/Random4-C/Random4-C.9.0.ss
+dijkstra: avg_t: 4568 msec
+dial: avg_t: 4897 msec
+radix: avg_t: 2006 msec
