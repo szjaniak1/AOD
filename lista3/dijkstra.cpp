@@ -56,7 +56,7 @@ int main(int argc, char* argv[])
 
     if(mode == 1)
     {
-        long long avg_time = 0;
+        long long time = 0;
         while(!src.empty())
         {
             int s = src.back();
@@ -64,11 +64,10 @@ int main(int argc, char* argv[])
             auto dist = g->dijkstra_classic_ss(s);
             auto stop = std::chrono::high_resolution_clock::now();
             auto duaration = std::chrono::duration_cast<std::chrono::milliseconds>(stop - start);
-            avg_time += duaration.count();
+            time += duaration.count();
             src.pop_back();
         }
-        my_file << "dijkstra: avg_t: " << avg_time << " msec" << std::endl;
-        my_file.flush();
+        my_file << "dijkstra: time: " << time << " msec" << std::endl;
     }
     else if (mode == 2)
     {

@@ -1,47 +1,37 @@
-./generator/inputs/Square-C/Square-C.0.0.ss
-dijkstra: avg_t: 2904 msec
-dial: avg_t: 1902 msec
-radix: avg_t: 1105 msec
-./generator/inputs/Square-C/Square-C.10.0.ss
-dijkstra: avg_t: 2708 msec
-radix: avg_t: 2227 msec
-./generator/inputs/Square-C/Square-C.1.0.ss
-dijkstra: avg_t: 2664 msec
-radix: avg_t: 1132 msec
-./generator/inputs/Square-C/Square-C.11.0.ss
-dijkstra: avg_t: 2757 msec
-radix: avg_t: 2159 msec
-./generator/inputs/Square-C/Square-C.12.0.ss
-dijkstra: avg_t: 4489 msec
-./generator/inputs/Square-C/Square-C.13.0.ss
-dijkstra: avg_t: 4253 msec
-./generator/inputs/Square-C/Square-C.14.0.ss
-dijkstra: avg_t: 3909 msec
-./generator/inputs/Square-C/Square-C.15.0.ss
-dijkstra: avg_t: 4417 msec
-./generator/inputs/Square-C/Square-C.2.0.ss
-dijkstra: avg_t: 2881 msec
-radix: avg_t: 1233 msec
-./generator/inputs/Square-C/Square-C.3.0.ss
-dijkstra: avg_t: 2831 msec
-radix: avg_t: 1307 msec
-./generator/inputs/Square-C/Square-C.4.0.ss
-dijkstra: avg_t: 2816 msec
-radix: avg_t: 1371 msec
-./generator/inputs/Square-C/Square-C.5.0.ss
-dijkstra: avg_t: 2834 msec
-radix: avg_t: 1513 msec
-./generator/inputs/Square-C/Square-C.6.0.ss
-dijkstra: avg_t: 2814 msec
-radix: avg_t: 1748 msec
-./generator/inputs/Square-C/Square-C.7.0.ss
-dijkstra: avg_t: 2687 msec
-radix: avg_t: 2059 msec
-./generator/inputs/Square-C/Square-C.8.0.ss
-dijkstra: avg_t: 2653 msec
-dial: avg_t: 3556 msec
-radix: avg_t: 2070 msec
-./generator/inputs/Square-C/Square-C.9.0.ss
-dijkstra: avg_t: 2618 msec
-dial: avg_t: 7371 msec
-radix: avg_t: 2220 msec
+./generator/inputs/Square-n/Square-n.10.0.ss
+dijkstra: time: 0 msec
+radix: time: 0 msec
+./generator/inputs/Square-n/Square-n.11.0.ss
+dijkstra: time: 0 msec
+radix: time: 0 msec
+./generator/inputs/Square-n/Square-n.12.0.ss
+dijkstra: time: 0 msec
+radix: time: 0 msec
+./generator/inputs/Square-n/Square-n.13.0.ss
+dijkstra: time: 289 msec
+radix: time: 133 msec
+./generator/inputs/Square-n/Square-n.14.0.ss
+dijkstra: time: 3514 msec
+radix: time: 2149 msec
+./generator/inputs/Square-n/Square-n.15.0.ss
+dijkstra: time: 4231 msec
+radix: time: 3275 msec
+./generator/inputs/Square-n/Square-n.16.0.ss
+dijkstra: time: 5563 msec
+radix: time: 4742 msec
+./generator/inputs/Square-n/Square-n.17.0.ss
+dijkstra: time: 6652 msec
+dial: time: 34216 msec
+radix: time: 5568 msec
+./generator/inputs/Square-n/Square-n.18.0.ss
+dijkstra: time: 7441 msec
+radix: time: 6504 msec
+./generator/inputs/Square-n/Square-n.19.0.ss
+dijkstra: time: 8650 msec
+radix: time: 6547 msec
+./generator/inputs/Square-n/Square-n.20.0.ss
+dijkstra: time: 8431 msec
+radix: time: 7900 msec
+./generator/inputs/Square-n/Square-n.21.0.ss
+dijkstra: time: 10275 msec
+radix: time: 8669 msec
